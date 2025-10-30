@@ -9,6 +9,7 @@ This is an autonomous user interface assembly engine powered by LLM API network 
 - 💻 **Codex Support**: Leverages OpenAI Codex for advanced code generation
 - 🎨 **Autonomous UI Generation**: Automatically creates beautiful user interfaces
 - 🧠 **Intelligent Reasoning**: Plans and executes complex tasks autonomously
+- 🧬 **Advanced Context Engine**: Powerful graph-based context management with vector embeddings, 3D spatial relationships, clustering, and non-redundant storage
 
 ## Configuration
 
@@ -41,14 +42,36 @@ Agent configuration is defined in `.github/agent-config.json`:
 
 1. **Set up your environment** (see Environment Setup section above for details)
 
-2. **Review agent configuration**:
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Review agent configuration**:
    - Check `.github/agent-config.json` for agent settings
    - Modify temperature, max_tokens, and model preferences as needed
 
-3. **Start building**:
+4. **Try the Context Engine**:
+   ```bash
+   python example_usage.py
+   ```
+   
+   Or use it in your code:
+   ```python
+   from context_engine import ContextEngine
+   
+   engine = ContextEngine()
+   node = engine.add_node(content="Your content here", node_type="knowledge")
+   similar = engine.find_similar_nodes(query_embedding, k=5)
+   ```
+
+5. **Start building**:
    - Use GitHub Copilot for code suggestions
    - Agents will work autonomously based on configuration
    - OpenRouter handles model routing and fallbacks
+   - Context Engine maintains semantic relationships
+
+For detailed Context Engine documentation, see [CONTEXT_ENGINE.md](CONTEXT_ENGINE.md).
 
 ## Architecture
 
@@ -56,6 +79,13 @@ Agent configuration is defined in `.github/agent-config.json`:
 - **Agent System**: Specialized GPT agents for different tasks
 - **Codex Integration**: Advanced code understanding and generation
 - **Context Management**: Maintains conversation and task context across agents
+- **Context Engine**: Graph-based context system with:
+  - **Nodes & Edges**: Complex relationship modeling
+  - **Vector Embeddings**: Semantic similarity and search
+  - **3D Spatial Relationships**: Geometric context representation
+  - **Clustering Algorithms**: K-means, DBSCAN, hierarchical clustering
+  - **Non-redundant Storage**: Content-based deduplication
+  - **Advanced Queries**: Path finding, neighbor traversal, similarity search
 
 ## API Keys Required
 
