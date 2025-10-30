@@ -118,11 +118,12 @@ agents/
 # Cosine similarity
 similarity = dot(v1, v2) / (norm(v1) * norm(v2))
 
-# Euclidean distance
-d = sqrt(Σ(x1-x2)²)
+# Euclidean distance (d dimensions)
+d = sqrt(Σᵢ₌₁ᵈ(x1ᵢ - x2ᵢ)²)
 
-# K-means clustering
-J = Σ Σ ||x - μk||²
+# K-means clustering (n points, K clusters)
+J = Σᵢ₌₁ⁿ Σₖ₌₁ᴷ wᵢₖ ||xᵢ - μₖ||²
+# where wᵢₖ = 1 if point i assigned to cluster k, else 0
 ```
 
 ### Clustering Algorithms
