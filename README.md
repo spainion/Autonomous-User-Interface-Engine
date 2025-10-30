@@ -10,6 +10,10 @@ This is an autonomous user interface assembly engine powered by LLM API network 
 - 🎨 **Autonomous UI Generation**: Automatically creates beautiful user interfaces
 - 🧠 **Intelligent Reasoning**: Plans and executes complex tasks autonomously
 - 🧬 **Advanced Context Engine**: Powerful graph-based context management with vector embeddings, 3D spatial relationships, clustering, and non-redundant storage
+- 🌐 **Network-Enhanced**: Real-time API integration with whitelisted domains
+- 📦 **Batch Processing**: Process multiple requests in parallel
+- 🔄 **Iterative Enhancement**: Continuous improvement through multiple passes
+- ⚡ **Optimized Compatibility**: All systems work seamlessly together
 
 ## Configuration
 
@@ -52,7 +56,7 @@ Agent configuration is defined in `.github/agent-config.json`:
    - Modify temperature, max_tokens, and model preferences as needed
    - Configure context engine settings (shared_context, embedding model, etc.)
 
-4. **Try the Context Engine**:
+4. **Try the Enhanced System**:
    ```bash
    # Basic context engine demo
    python example_usage.py
@@ -62,21 +66,41 @@ Agent configuration is defined in `.github/agent-config.json`:
    
    # Multi-agent collaboration
    python multi_agent_example.py
+   
+   # Enhanced system with network, batch, and iterative features
+   python enhanced_system_demo.py
    ```
    
    Or use it in your code:
    ```python
-   from context_engine import ContextEngine
-   from agents import CodexAgent, UIDesignerAgent, ReasoningAgent
+   from context_engine import ContextEngine, NetworkContextEngine
+   from agents import EnhancedCodexAgent, EnhancedUIDesignerAgent
    
-   # Use context engine directly
-   engine = ContextEngine()
-   node = engine.add_node(content="Your content here", node_type="knowledge")
-   similar = engine.find_similar_nodes(query_embedding, k=5)
+   # Use network-enhanced context engine
+   engine = NetworkContextEngine(whitelist_all_domains=True)
+   node = engine.add_node_with_text("Your content", "embedding text")
    
-   # Or use context-aware agents
-   codex = CodexAgent("MyCodeBot")
-   result = codex.process_request("Generate authentication API")
+   # Use enhanced agents with batch processing
+   codex = EnhancedCodexAgent("PowerfulBot")
+   
+   # Batch generation
+   results = codex.batch_generate_code([
+       "Create auth API",
+       "Create validation",
+       "Create middleware"
+   ], parallel=True)
+   
+   # Iterative improvement
+   iterations = codex.iteratively_improve_code(
+       "Create web server",
+       iterations=3
+   )
+   
+   # Network-enhanced query
+   result = codex.query_with_context(
+       "How to implement OAuth?",
+       use_llm=True
+   )
    ```
 
 5. **Start building**:
@@ -89,6 +113,7 @@ Agent configuration is defined in `.github/agent-config.json`:
 For detailed documentation:
 - **Context Engine:** [CONTEXT_ENGINE.md](CONTEXT_ENGINE.md)
 - **Agent Integration:** [AGENT_INTEGRATION.md](AGENT_INTEGRATION.md)
+- **Enhanced System:** [ENHANCED_SYSTEM.md](ENHANCED_SYSTEM.md) - Network, batch processing, iterative enhancement
 
 ## Architecture
 

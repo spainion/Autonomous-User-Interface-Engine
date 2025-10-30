@@ -7,12 +7,14 @@ A powerful context management system with:
 - 3D spatial relationships
 - Clustering and similarity calculations
 - Non-redundant storage with deduplication
+- Network-enhanced capabilities with API integration
 """
 
 from .context_engine import ContextEngine
 from .node import Node
 from .edge import Edge
 from .vector_space import VectorSpace
+from .network_engine import NetworkContextEngine
 
-__version__ = "0.1.0"
-__all__ = ["ContextEngine", "Node", "Edge", "VectorSpace"]
+__version__ = "0.2.0"
+__all__ = ["ContextEngine", "Node", "Edge", "VectorSpace", "NetworkContextEngine"]
