@@ -91,8 +91,8 @@ def init_agent_system(
     if enable_caching:
         print("2. Enabling Advanced Caching (1000x+ speedup)...")
         cache = AdvancedCache(
-            max_size=10000,
-            ttl=3600,
+            max_entries=10000,
+            default_ttl=3600,
             enable_disk_cache=True
         )
         engine.cache = cache
@@ -118,18 +118,31 @@ def init_agent_system(
     # 3. Initialize all agent types with shared context
     print("7. Initializing All Agent Types...")
     
+    # Set the shared context for all agents
     if self_enhancing:
+        # Set shared context on base classes
+        from agents.base_agent import BaseAgent
+        from agents.enhanced_agents import EnhancedBaseAgent
+        BaseAgent._shared_context = engine
+        EnhancedBaseAgent._shared_network_context = engine
+        
         agents = {
-            'codex': SelfEnhancingCodexAgent(context_engine=engine),
-            'ui_designer': SelfEnhancingUIDesignerAgent(context_engine=engine),
-            'reasoning': SelfEnhancingReasoningAgent(context_engine=engine)
+            'codex': SelfEnhancingCodexAgent(),
+            'ui_designer': SelfEnhancingUIDesignerAgent(),
+            'reasoning': SelfEnhancingReasoningAgent()
         }
         print("   ✓ Self-Enhancing Agents (with learning & tool creation)")
     else:
+        # Set shared context on base classes
+        from agents.base_agent import BaseAgent
+        from agents.enhanced_agents import EnhancedBaseAgent
+        BaseAgent._shared_context = engine
+        EnhancedBaseAgent._shared_network_context = engine
+        
         agents = {
-            'codex': EnhancedCodexAgent(context_engine=engine),
-            'ui_designer': EnhancedUIDesignerAgent(context_engine=engine),
-            'reasoning': EnhancedReasoningAgent(context_engine=engine)
+            'codex': EnhancedCodexAgent(),
+            'ui_designer': EnhancedUIDesignerAgent(),
+            'reasoning': EnhancedReasoningAgent()
         }
         print("   ✓ Enhanced Agents (with network & batch)")
     

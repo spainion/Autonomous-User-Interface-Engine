@@ -431,3 +431,7 @@ class HybridSearch:
             final_results.append((doc_id, score, metadata))
         
         return final_results
+
+
+# Alias for backward compatibility
+AdvancedSearchEngine = HybridSearch
