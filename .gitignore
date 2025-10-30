@@ -45,3 +45,9 @@ temp/
 # Cache directories
 .cache/
 *.cache
+
+# Showcase output (generated content - too large for git)
+showcase_output/*/
+showcase_output/*.html
+showcase_output/*.json
+!showcase_output/README.md
