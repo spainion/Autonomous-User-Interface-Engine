@@ -9,6 +9,12 @@ networkx>=3.0
 # Vector Operations and Embeddings
 sentence-transformers>=2.2.0
 
+# Advanced Search (FAISS for ultra-fast vector search)
+faiss-cpu>=1.7.4  # Use faiss-gpu for GPU support
+
+# Performance Monitoring
+psutil>=5.9.0
+
 # OpenRouter and OpenAI Integration
 openai>=1.0.0
 requests>=2.31.0
