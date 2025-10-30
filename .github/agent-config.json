@@ -159,5 +159,35 @@
     "standardize_interfaces": true,
     "enable_hot_reload": true,
     "support_plugins": true
+  },
+  "universal_compatibility": {
+    "enabled": true,
+    "github_copilot": {
+      "enabled": true,
+      "workspace_aware": true,
+      "context_enhancement": true,
+      "export_context": true
+    },
+    "openai_codex": {
+      "enabled": true,
+      "model": "code-davinci-002",
+      "fallback_to_local": true,
+      "context_aware_prompts": true
+    },
+    "openai_assistants": {
+      "compatible": true,
+      "context_access": true,
+      "tool_integration": true
+    },
+    "autonomous_mode": {
+      "enabled": true,
+      "intelligent_routing": true,
+      "graceful_fallback": true
+    },
+    "agent_registry": {
+      "auto_register": true,
+      "capability_tracking": true,
+      "dynamic_routing": true
+    }
   }
 }

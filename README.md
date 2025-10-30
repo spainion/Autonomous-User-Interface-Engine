@@ -17,6 +17,7 @@ This is an autonomous user interface assembly engine powered by LLM API network 
 - 🎓 **Self-Enhancement**: Agents learn from experience and improve over time
 - 🛠️ **Self-Programming**: Agents create their own tools dynamically
 - 🤝 **Better Coordination**: Agents optimize collaboration automatically
+- 🌍 **Universal Compatibility**: Works with GitHub Copilot, OpenAI Codex, Assistants API, and any custom agents
 
 ## Configuration
 
@@ -75,37 +76,39 @@ Agent configuration is defined in `.github/agent-config.json`:
    
    # Self-enhancement capabilities
    python self_enhancement_demo.py
+   
+   # Universal compatibility (Copilot, Codex, Assistants API)
+   python universal_compatibility_demo.py
    ```
    
    Or use it in your code:
    ```python
-   from context_engine import NetworkContextEngine
-   from agents import (
-       EnhancedCodexAgent,
-       SelfEnhancingCodexAgent
+   from universal_compatibility import create_universal_agent_system
+   
+   # Create system compatible with everything
+   interface = create_universal_agent_system()
+   
+   # Works with GitHub Copilot
+   result = interface.route_request(
+       "Create auth function",
+       preferred_agent_type='github_copilot'
    )
    
-   # Network-enhanced context engine
-   engine = NetworkContextEngine(whitelist_all_domains=True)
-   
-   # Self-enhancing agent (learns and improves over time)
-   agent = SelfEnhancingCodexAgent()
-   
-   # Agent learns from tasks
-   for task in tasks:
-       result = agent.process_request(task)
-       # Agent gets better with each task
-   
-   # Agent self-programs new tools
-   agent.self_program_tool(
-       'my_tool',
-       'Description of what tool does'
+   # Works with OpenAI Codex
+   result = interface.route_request(
+       "Generate API code",
+       preferred_agent_type='openai_codex'
    )
    
-   # Check improvement
-   stats = agent.get_self_enhancement_stats()
-   print(f"Success rate: {stats['success_rate']:.1%}")
-   print(f"Tools created: {stats['self_programmed_tools']}")
+   # Works with custom agents
+   result = interface.route_request(
+       "Design UI",
+       preferred_agent_type='ui_designer'
+   )
+   
+   # Autonomous fallback if APIs unavailable
+   # All agents share same context
+   # System learns and improves over time
    ```
 
 5. **Start building**:
@@ -120,6 +123,7 @@ For detailed documentation:
 - **Agent Integration:** [AGENT_INTEGRATION.md](AGENT_INTEGRATION.md)
 - **Enhanced System:** [ENHANCED_SYSTEM.md](ENHANCED_SYSTEM.md) - Network, batch processing, iterative enhancement
 - **Self-Enhancement:** [SELF_ENHANCEMENT.md](SELF_ENHANCEMENT.md) - Self-learning, self-programming, capability growth
+- **Universal Compatibility:** [UNIVERSAL_COMPATIBILITY.md](UNIVERSAL_COMPATIBILITY.md) - GitHub Copilot, OpenAI Codex, Assistants API integration
 
 ## Architecture
 
