@@ -5,21 +5,43 @@
       "model": "gpt-4",
       "temperature": 0.7,
       "max_tokens": 2048,
-      "purpose": "Code generation and analysis"
+      "purpose": "Code generation and analysis",
+      "use_context_engine": true,
+      "context_recall_limit": 5
     },
     "ui_designer": {
       "enabled": true,
       "model": "gpt-4",
       "temperature": 0.8,
       "max_tokens": 1500,
-      "purpose": "UI/UX design and component generation"
+      "purpose": "UI/UX design and component generation",
+      "use_context_engine": true,
+      "context_recall_limit": 5
     },
     "reasoning_agent": {
       "enabled": true,
       "model": "gpt-4",
       "temperature": 0.6,
       "max_tokens": 2048,
-      "purpose": "Logic reasoning and planning"
+      "purpose": "Logic reasoning and planning",
+      "use_context_engine": true,
+      "context_recall_limit": 10
+    }
+  },
+  "context_engine": {
+    "enabled": true,
+    "shared_context": true,
+    "embedding_backend": "openai",
+    "embedding_model": "text-embedding-3-small",
+    "clustering_method": "kmeans",
+    "default_similarity_threshold": 0.5,
+    "max_context_nodes": 10000,
+    "features": {
+      "deduplication": true,
+      "vector_similarity": true,
+      "spatial_queries": true,
+      "clustering": true,
+      "path_finding": true
     }
   },
   "openrouter": {
@@ -51,6 +73,8 @@
     "auto_reasoning": true,
     "multi_agent_collaboration": true,
     "context_preservation": true,
-    "ui_auto_generation": true
+    "ui_auto_generation": true,
+    "context_aware_responses": true,
+    "agent_memory_sharing": true
   }
 }
