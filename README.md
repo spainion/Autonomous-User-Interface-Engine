@@ -2,6 +2,25 @@
 
 An autonomous user interface assembly engine powered by LLM API network calls with **massive enhancements** for performance, intelligence, and scalability. The engine achieves **10-100x speedups** through advanced caching, FAISS-powered search, and intelligent memory management.
 
+## ⚡ Quick Start - Use the System in Your Workflow
+
+**For GitHub Copilot, OpenAI Agents, and All Users:**
+
+```python
+# Import and initialize (one line!)
+from agent_init import init_agent_system
+
+# Get access to everything
+engine, agents = init_agent_system()
+
+# All agents share the same context automatically
+result = agents['codex'].generate_code("your task")
+
+# That's it! All systems are connected and working together.
+```
+
+**See `INTEGRATION_GUIDE.md` for complete details on how all systems work together.**
+
 ## 🚀 Core Features
 
 - 🤖 **Multi-Agent System**: Coordinated GPT agents for different tasks (Codex, UI Design, Reasoning)
@@ -41,11 +60,31 @@ An autonomous user interface assembly engine powered by LLM API network calls wi
 
 > **Performance Impact**: Systems are now 10-100x faster with intelligent memory management!
 
+## 🔗 System Integration
+
+**All systems are directly linked and work together automatically:**
+
+- ✅ **GitHub Copilot** uses the context engine via `.github/copilot-instructions.md`
+- ✅ **OpenAI Codex** connects through `universal_compatibility.py`
+- ✅ **All agents** share the same context via `agent_init.py`
+- ✅ **Self-enhancement** is automatic for all agents
+- ✅ **Performance features** (FAISS, caching) work automatically
+
+**To use in your workflow:**
+
+```python
+from agent_init import init_agent_system
+engine, agents = init_agent_system()
+# Now all agents share context and collaborate!
+```
+
+**See `INTEGRATION_GUIDE.md` for complete integration details.**
+
 ## Configuration
 
 ### 1. GitHub Copilot Setup
 
-GitHub Copilot is configured through `.github/copilot-instructions.md`. This file provides context-aware suggestions tailored to this project's needs.
+GitHub Copilot is configured through `.github/copilot-instructions.md`. **This file now includes instructions for using the context engine directly in your workflow.** Copilot will automatically reference the context system when working on this project.
 
 ### 2. GPT Agents Configuration
 
