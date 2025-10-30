@@ -293,8 +293,13 @@ class DesignSystemGenerator:
     def _generate_spacing_system(self, scale: str) -> SpacingSystem:
         """Generate spacing system"""
         
-        # Base unit
-        base = 4 if scale == 'compact' else (8 if scale == 'spacious' else 4)
+        # Map scale to base unit
+        scale_to_base = {
+            'compact': 4,
+            'moderate': 4,
+            'spacious': 8
+        }
+        base = scale_to_base.get(scale, 4)  # Default to 4 if unknown scale
         
         # Generate scale
         spacing_scale = ['0']
