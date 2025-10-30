@@ -79,11 +79,35 @@ class CopilotSystemAccess:
             # Initialize integrations
             self._initialize_integrations()
             
+            # Initialize UI design system
+            self._initialize_ui_system()
+            
             self._initialized = True
             return True
         except Exception as e:
             print(f"Error initializing Copilot system access: {e}")
             return False
+    
+    def _initialize_ui_system(self):
+        """Initialize UI design system"""
+        try:
+            from ui_design_expert import UIDesignExpert
+            from design_research_engine import DesignResearchEngine
+            from llm_ui_generator import LLMUIGenerator
+            from design_orchestrator import DesignOrchestrator
+            from prompt_enhancer import PromptEnhancer
+            from web_scraper import WebScraper
+            
+            self._ui_expert = UIDesignExpert()
+            self._design_research = DesignResearchEngine()
+            self._llm_ui_gen = LLMUIGenerator()
+            self._design_orchestrator = DesignOrchestrator()
+            self._prompt_enhancer = PromptEnhancer()
+            self._web_scraper = WebScraper()
+            self._integrations['ui_system'] = True
+        except Exception as e:
+            print(f"UI system optional, not loaded: {e}")
+            self._integrations['ui_system'] = False
     
     def _initialize_integrations(self):
         """Initialize all external system integrations"""
@@ -256,6 +280,57 @@ class CopilotSystemAccess:
         if not self._initialized:
             self.initialize()
         return self._universal.register_agent(agent_name, agent_instance)
+    
+    # ==================== UI DESIGN SYSTEM ====================
+    
+    def generate_ui(self, task, framework='bootstrap', research=False, llm_enhance=False, accessibility=True, **kwargs):
+        """Generate UI with expert design system"""
+        if not self._initialized:
+            self.initialize()
+        
+        if self._integrations.get('ui_system') and (research or llm_enhance):
+            return self._design_orchestrator.create_complete_ui(
+                description=task, framework=framework, research_enabled=research,
+                llm_reasoning=llm_enhance, accessibility=accessibility, **kwargs)
+        elif self._integrations.get('ui_system'):
+            return self._ui_expert.generate_page(task, framework=framework, 
+                accessibility=accessibility, **kwargs)
+        else:
+            return self._agents['ui_designer'].generate_ui(task, **kwargs)
+    
+    def research_ui_patterns(self, niche, top_sites=15, **kwargs):
+        """Research UI patterns for specific niche"""
+        if not self._initialized:
+            self.initialize()
+        if self._integrations.get('ui_system'):
+            return self._design_research.research_niche(niche, analyze_top_n=top_sites, **kwargs)
+        return {}
+    
+    def get_design_recommendations(self, current_design, target_audience='general', **kwargs):
+        """Get design recommendations and improvements"""
+        if not self._initialized:
+            self.initialize()
+        if self._integrations.get('ui_system'):
+            return self._llm_ui_gen.critique_and_improve(current_design, focus=target_audience, **kwargs)
+        return {}
+    
+    def scrape_design(self, url, extract_css=True, extract_components=True, **kwargs):
+        """Scrape and analyze design from URL"""
+        if not self._initialized:
+            self.initialize()
+        if self._integrations.get('ui_system'):
+            return self._web_scraper.scrape_and_analyze(url, extract_css=extract_css, 
+                extract_components=extract_components, **kwargs)
+        return {}
+    
+    def enhance_ui_prompt(self, prompt, inject_best_practices=True, add_accessibility=True, **kwargs):
+        """Enhance UI generation prompt with best practices"""
+        if not self._initialized:
+            self.initialize()
+        if self._integrations.get('ui_system'):
+            return self._prompt_enhancer.enhance_prompt(prompt, inject_best_practices=inject_best_practices,
+                add_accessibility=add_accessibility, **kwargs)
+        return prompt
     
     # ==================== EXTERNAL INTEGRATIONS ====================
     
