@@ -39,11 +39,7 @@ Agent configuration is defined in `.github/agent-config.json`:
 
 ## Getting Started
 
-1. **Set up your environment**:
-   ```bash
-   cp .env.template .env
-   # Edit .env with your API keys
-   ```
+1. **Set up your environment** (see Environment Setup section above for details)
 
 2. **Review agent configuration**:
    - Check `.github/agent-config.json` for agent settings
