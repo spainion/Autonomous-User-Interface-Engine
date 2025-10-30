@@ -14,6 +14,9 @@ This is an autonomous user interface assembly engine powered by LLM API network 
 - 📦 **Batch Processing**: Process multiple requests in parallel
 - 🔄 **Iterative Enhancement**: Continuous improvement through multiple passes
 - ⚡ **Optimized Compatibility**: All systems work seamlessly together
+- 🎓 **Self-Enhancement**: Agents learn from experience and improve over time
+- 🛠️ **Self-Programming**: Agents create their own tools dynamically
+- 🤝 **Better Coordination**: Agents optimize collaboration automatically
 
 ## Configuration
 
@@ -69,38 +72,40 @@ Agent configuration is defined in `.github/agent-config.json`:
    
    # Enhanced system with network, batch, and iterative features
    python enhanced_system_demo.py
+   
+   # Self-enhancement capabilities
+   python self_enhancement_demo.py
    ```
    
    Or use it in your code:
    ```python
-   from context_engine import ContextEngine, NetworkContextEngine
-   from agents import EnhancedCodexAgent, EnhancedUIDesignerAgent
+   from context_engine import NetworkContextEngine
+   from agents import (
+       EnhancedCodexAgent,
+       SelfEnhancingCodexAgent
+   )
    
-   # Use network-enhanced context engine
+   # Network-enhanced context engine
    engine = NetworkContextEngine(whitelist_all_domains=True)
-   node = engine.add_node_with_text("Your content", "embedding text")
    
-   # Use enhanced agents with batch processing
-   codex = EnhancedCodexAgent("PowerfulBot")
+   # Self-enhancing agent (learns and improves over time)
+   agent = SelfEnhancingCodexAgent()
    
-   # Batch generation
-   results = codex.batch_generate_code([
-       "Create auth API",
-       "Create validation",
-       "Create middleware"
-   ], parallel=True)
+   # Agent learns from tasks
+   for task in tasks:
+       result = agent.process_request(task)
+       # Agent gets better with each task
    
-   # Iterative improvement
-   iterations = codex.iteratively_improve_code(
-       "Create web server",
-       iterations=3
+   # Agent self-programs new tools
+   agent.self_program_tool(
+       'my_tool',
+       'Description of what tool does'
    )
    
-   # Network-enhanced query
-   result = codex.query_with_context(
-       "How to implement OAuth?",
-       use_llm=True
-   )
+   # Check improvement
+   stats = agent.get_self_enhancement_stats()
+   print(f"Success rate: {stats['success_rate']:.1%}")
+   print(f"Tools created: {stats['self_programmed_tools']}")
    ```
 
 5. **Start building**:
@@ -114,6 +119,7 @@ For detailed documentation:
 - **Context Engine:** [CONTEXT_ENGINE.md](CONTEXT_ENGINE.md)
 - **Agent Integration:** [AGENT_INTEGRATION.md](AGENT_INTEGRATION.md)
 - **Enhanced System:** [ENHANCED_SYSTEM.md](ENHANCED_SYSTEM.md) - Network, batch processing, iterative enhancement
+- **Self-Enhancement:** [SELF_ENHANCEMENT.md](SELF_ENHANCEMENT.md) - Self-learning, self-programming, capability growth
 
 ## Architecture
 

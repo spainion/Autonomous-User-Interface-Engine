@@ -11,7 +11,13 @@
       "enhanced": true,
       "network_enabled": true,
       "batch_size": 10,
-      "parallel_processing": true
+      "parallel_processing": true,
+      "self_enhancement": {
+        "enabled": true,
+        "learning_rate": "adaptive",
+        "tool_creation": true,
+        "pattern_extraction": true
+      }
     },
     "ui_designer": {
       "enabled": true,
@@ -24,7 +30,13 @@
       "enhanced": true,
       "network_enabled": true,
       "batch_size": 10,
-      "parallel_processing": true
+      "parallel_processing": true,
+      "self_enhancement": {
+        "enabled": true,
+        "learning_rate": "adaptive",
+        "tool_creation": true,
+        "pattern_extraction": true
+      }
     },
     "reasoning_agent": {
       "enabled": true,
@@ -37,7 +49,14 @@
       "enhanced": true,
       "network_enabled": true,
       "batch_size": 10,
-      "parallel_processing": true
+      "parallel_processing": true,
+      "self_enhancement": {
+        "enabled": true,
+        "learning_rate": "adaptive",
+        "tool_creation": true,
+        "pattern_extraction": true,
+        "strategy_adaptation": true
+      }
     }
   },
   "context_engine": {
@@ -129,7 +148,10 @@
     "iterative_enhancement": true,
     "network_integration": true,
     "continuous_optimization": true,
-    "cross_compatibility": true
+    "cross_compatibility": true,
+    "self_learning": true,
+    "self_programming": true,
+    "capability_growth": true
   },
   "compatibility": {
     "optimize_all_systems": true,

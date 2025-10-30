@@ -8,6 +8,12 @@ Enhanced agents provide:
 - Batch processing
 - Iterative enhancements
 - Cross-compatibility optimization
+
+Self-Enhancing agents add:
+- Self-learning from experiences
+- Self-programming new tools
+- Enhanced reasoning and planning
+- Improved coordination
 """
 
 from .base_agent import BaseAgent
@@ -18,6 +24,12 @@ from .enhanced_concrete_agents import (
     EnhancedUIDesignerAgent,
     EnhancedReasoningAgent
 )
+from .self_enhancing_agent import SelfEnhancingAgent
+from .self_enhancing_concrete_agents import (
+    SelfEnhancingCodexAgent,
+    SelfEnhancingUIDesignerAgent,
+    SelfEnhancingReasoningAgent
+)
 
 __all__ = [
     'BaseAgent',
@@ -27,6 +39,10 @@ __all__ = [
     'EnhancedBaseAgent',
     'EnhancedCodexAgent',
     'EnhancedUIDesignerAgent',
-    'EnhancedReasoningAgent'
+    'EnhancedReasoningAgent',
+    'SelfEnhancingAgent',
+    'SelfEnhancingCodexAgent',
+    'SelfEnhancingUIDesignerAgent',
+    'SelfEnhancingReasoningAgent'
 ]
 
