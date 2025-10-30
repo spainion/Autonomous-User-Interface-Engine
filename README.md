@@ -50,19 +50,33 @@ Agent configuration is defined in `.github/agent-config.json`:
 3. **Review agent configuration**:
    - Check `.github/agent-config.json` for agent settings
    - Modify temperature, max_tokens, and model preferences as needed
+   - Configure context engine settings (shared_context, embedding model, etc.)
 
 4. **Try the Context Engine**:
    ```bash
+   # Basic context engine demo
    python example_usage.py
+   
+   # Single agent with context
+   python agent_integration_example.py
+   
+   # Multi-agent collaboration
+   python multi_agent_example.py
    ```
    
    Or use it in your code:
    ```python
    from context_engine import ContextEngine
+   from agents import CodexAgent, UIDesignerAgent, ReasoningAgent
    
+   # Use context engine directly
    engine = ContextEngine()
    node = engine.add_node(content="Your content here", node_type="knowledge")
    similar = engine.find_similar_nodes(query_embedding, k=5)
+   
+   # Or use context-aware agents
+   codex = CodexAgent("MyCodeBot")
+   result = codex.process_request("Generate authentication API")
    ```
 
 5. **Start building**:
@@ -70,8 +84,11 @@ Agent configuration is defined in `.github/agent-config.json`:
    - Agents will work autonomously based on configuration
    - OpenRouter handles model routing and fallbacks
    - Context Engine maintains semantic relationships
+   - All agents share memory and can collaborate
 
-For detailed Context Engine documentation, see [CONTEXT_ENGINE.md](CONTEXT_ENGINE.md).
+For detailed documentation:
+- **Context Engine:** [CONTEXT_ENGINE.md](CONTEXT_ENGINE.md)
+- **Agent Integration:** [AGENT_INTEGRATION.md](AGENT_INTEGRATION.md)
 
 ## Architecture
 
