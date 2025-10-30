@@ -1,0 +1,43 @@
+# Gitignore for Autonomous User Interface Engine
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# API Keys and Secrets
+*.key
+secrets/
+credentials/
+
+# Dependencies
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
