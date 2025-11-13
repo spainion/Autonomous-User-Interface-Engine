@@ -1,0 +1,20 @@
+
+
+/* Custom Styles */
+.hero-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    animation: fade-in 1s ease;
+}
