@@ -17,7 +17,7 @@ Features:
 import os
 import json
 import asyncio
-from typing import Dict, List, Any, Optional, Callable
+from typing import Dict, List, Any, Optional, Callable, AsyncGenerator
 from dataclasses import dataclass, asdict
 from datetime import datetime
 from enum import Enum
