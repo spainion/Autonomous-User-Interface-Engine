@@ -13,6 +13,7 @@ Features:
 - Sentiment analysis
 - Language-agnostic UI generation
 - Real-time streaming interpretation
+- Intelligent LLM orchestration
 """
 
 import re
@@ -22,6 +23,17 @@ from dataclasses import dataclass, field
 from enum import Enum
 import requests
 import os
+
+# Import intelligent orchestrator if available
+try:
+    from intelligent_llm_orchestrator import (
+        IntelligentLLMOrchestrator,
+        TaskType,
+        PromptStrategy
+    )
+    ORCHESTRATOR_AVAILABLE = True
+except ImportError:
+    ORCHESTRATOR_AVAILABLE = False
 
 
 class Language(Enum):
@@ -102,11 +114,20 @@ class EnhancedNLPSystem:
     - Integration with context engine
     """
     
-    def __init__(self, context_engine=None, api_key: Optional[str] = None):
+    def __init__(self, context_engine=None, api_key: Optional[str] = None, use_orchestrator: bool = True):
         """Initialize enhanced NLP system"""
         self.context_engine = context_engine
         self.api_key = api_key or os.getenv('OPENROUTER_API_KEY', '')
         self.base_url = "https://openrouter.ai/api/v1/chat/completions"
+        
+        # Initialize intelligent orchestrator if available and requested
+        self.orchestrator = None
+        if use_orchestrator and ORCHESTRATOR_AVAILABLE and self.api_key:
+            try:
+                self.orchestrator = IntelligentLLMOrchestrator(api_key=self.api_key)
+                print(f"  ✓ Intelligent orchestrator enabled")
+            except Exception as e:
+                print(f"  ⚠ Orchestrator initialization failed: {e}")
         
         # Language detection patterns
         self.language_patterns = {
@@ -178,6 +199,7 @@ class EnhancedNLPSystem:
         print(f"✓ Enhanced NLP System initialized")
         print(f"  Multilingual support: {len(self.language_patterns) + 1} languages")
         print(f"  Intent types: {len(self.intent_keywords)}")
+        print(f"  Intelligent orchestration: {'Enabled' if self.orchestrator else 'Disabled'}")
     
     def detect_language(self, text: str) -> Language:
         """
@@ -342,6 +364,153 @@ class EnhancedNLPSystem:
         
         sentiment = (positive_count - negative_count) / total
         return sentiment
+    
+    def interpret_with_orchestration(
+        self,
+        text: str,
+        use_consensus: bool = False,
+        store_in_context: bool = True
+    ) -> LanguageInterpretation:
+        """
+        Perform interpretation using intelligent orchestration.
+        
+        Args:
+            text: Input text to interpret
+            use_consensus: Whether to use multi-model consensus
+            store_in_context: Whether to store in context engine
+            
+        Returns:
+            Enhanced language interpretation with orchestration
+        """
+        print(f"\n🎯 Orchestrated NLP Interpretation...")
+        print(f"Input: {text[:100]}..." if len(text) > 100 else f"Input: {text}")
+        
+        # Basic interpretation first
+        basic_interpretation = self._basic_interpretation(text)
+        
+        if not self.orchestrator:
+            print("  ⚠ Orchestrator not available, using basic interpretation")
+            return basic_interpretation
+        
+        try:
+            # Determine task type from intent
+            intent_to_task = {
+                'create_ui': TaskType.UI_DESIGN,
+                'modify_ui': TaskType.UI_DESIGN,
+                'generate_code': TaskType.CODE_GENERATION,
+                'analyze_code': TaskType.CODE_ANALYSIS,
+                'optimize': TaskType.CODE_ANALYSIS,
+                'explain': TaskType.QUESTION_ANSWER,
+                'translate': TaskType.TRANSLATION
+            }
+            
+            task_type = intent_to_task.get(
+                basic_interpretation.intent.value.split('_')[0] + '_' + basic_interpretation.intent.value.split('_')[-1]
+                if '_' in basic_interpretation.intent.value else basic_interpretation.intent.value,
+                TaskType.QUESTION_ANSWER
+            )
+            
+            # Build variables for template
+            variables = {
+                'task_description': text,
+                'language': basic_interpretation.language.value,
+                'detected_intent': basic_interpretation.intent.value,
+                'entities': ', '.join([e.text for e in basic_interpretation.entities])
+            }
+            
+            # Execute orchestration
+            if use_consensus:
+                # Use multiple models for consensus
+                template_id = 'reasoning_tot' if task_type == TaskType.REASONING else 'code_generation_cot'
+                result = self.orchestrator.orchestrate_with_consensus(
+                    task_type=task_type,
+                    template_id=template_id if template_id in self.orchestrator.prompt_templates else list(self.orchestrator.prompt_templates.keys())[0],
+                    variables={'problem': text} if task_type == TaskType.REASONING else {'task_description': text},
+                    num_models=3
+                )
+                
+                # Use synthesized result
+                llm_content = result.synthesized_result or result.primary_response.content
+                confidence = result.confidence
+                reasoning = f"Multi-model consensus with {len(result.alternative_responses) + 1} models"
+                
+            else:
+                # Single best model
+                model_key = self.orchestrator.select_best_model(task_type, complexity='medium')
+                
+                # Select appropriate template
+                template_id = 'code_generation_cot'
+                if task_type == TaskType.UI_DESIGN:
+                    template_id = 'ui_design_detailed'
+                    variables = {
+                        'requirements': text,
+                        'framework': 'bootstrap',
+                        'style': 'modern'
+                    }
+                elif task_type == TaskType.CODE_ANALYSIS:
+                    template_id = 'code_analysis_detailed'
+                elif task_type == TaskType.REASONING:
+                    template_id = 'reasoning_tot'
+                    variables = {'problem': text}
+                
+                if template_id in self.orchestrator.prompt_templates:
+                    system_prompt, user_prompt = self.orchestrator.build_prompt(template_id, variables)
+                    
+                    response = self.orchestrator.execute_llm_request(
+                        model_key,
+                        system_prompt,
+                        user_prompt
+                    )
+                    
+                    llm_content = response.content
+                    confidence = 0.85
+                    reasoning = f"Intelligent model selection: {response.model}"
+                else:
+                    llm_content = "Template not found"
+                    confidence = 0.5
+                    reasoning = "Fallback to basic interpretation"
+            
+            # Parse LLM response to extract structured information
+            enhanced_structure = basic_interpretation.semantic_structure.copy()
+            enhanced_structure['llm_analysis'] = llm_content
+            
+            # Create enhanced interpretation
+            interpretation = LanguageInterpretation(
+                original_text=text,
+                language=basic_interpretation.language,
+                intent=basic_interpretation.intent,
+                confidence=confidence,
+                entities=basic_interpretation.entities,
+                semantic_structure=enhanced_structure,
+                context_requirements=basic_interpretation.context_requirements,
+                suggested_actions=basic_interpretation.suggested_actions,
+                translations={},
+                sentiment=basic_interpretation.sentiment,
+                reasoning=reasoning
+            )
+            
+            # Store in context engine
+            if store_in_context and self.context_engine:
+                try:
+                    self.context_engine.add_node(
+                        content=text,
+                        node_type='orchestrated_interpretation',
+                        metadata={
+                            'language': interpretation.language.value,
+                            'intent': interpretation.intent.value,
+                            'confidence': confidence,
+                            'orchestration': 'consensus' if use_consensus else 'single_model'
+                        }
+                    )
+                except Exception as e:
+                    print(f"  ⚠ Context storage failed: {e}")
+            
+            print(f"✓ Orchestrated interpretation complete (confidence: {confidence:.0%})")
+            return interpretation
+            
+        except Exception as e:
+            print(f"  ⚠ Orchestration failed: {e}, using basic interpretation")
+            return basic_interpretation
     
     def interpret_with_context(
         self,

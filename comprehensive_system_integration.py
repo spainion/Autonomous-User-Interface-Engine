@@ -123,14 +123,15 @@ class ComprehensiveSystem:
         except Exception as e:
             print(f"   ⚠ Workflow database initialization failed: {e}")
         
-        # Step 3: Initialize Enhanced NLP System
-        print("\n3️⃣  Initializing Enhanced NLP System...")
+        # Step 3: Initialize Enhanced NLP System with Orchestration
+        print("\n3️⃣  Initializing Enhanced NLP System with Orchestration...")
         try:
             self.nlp_system = EnhancedNLPSystem(
                 context_engine=self.context_engine,
-                api_key=os.getenv('OPENROUTER_API_KEY')
+                api_key=os.getenv('OPENROUTER_API_KEY'),
+                use_orchestrator=True  # Enable intelligent orchestration
             )
-            print("   ✓ Enhanced NLP system initialized")
+            print("   ✓ Enhanced NLP system with orchestration initialized")
         except Exception as e:
             print(f"   ⚠ NLP system initialization failed: {e}")
         
@@ -188,14 +189,23 @@ class ComprehensiveSystem:
         }
         
         try:
-            # Step 1: Interpret with NLP system
+            # Step 1: Interpret with NLP system using orchestration
             if self.nlp_system:
-                print("\n📝 Step 1: NLP Interpretation")
-                interpretation = self.nlp_system.interpret_with_context(
-                    text,
-                    use_llm=bool(os.getenv('OPENROUTER_API_KEY')),
-                    store_in_context=True
-                )
+                print("\n📝 Step 1: Orchestrated NLP Interpretation")
+                
+                # Use orchestration if available
+                if hasattr(self.nlp_system, 'orchestrator') and self.nlp_system.orchestrator:
+                    interpretation = self.nlp_system.interpret_with_orchestration(
+                        text,
+                        use_consensus=False,  # Set to True for multi-model consensus
+                        store_in_context=True
+                    )
+                else:
+                    interpretation = self.nlp_system.interpret_with_context(
+                        text,
+                        use_llm=bool(os.getenv('OPENROUTER_API_KEY')),
+                        store_in_context=True
+                    )
                 
                 result['interpretation'] = {
                     'language': interpretation.language.value,
