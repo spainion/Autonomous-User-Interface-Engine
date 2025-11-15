@@ -5,259 +5,576 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechMart</title>
     <style>
-/* TechMart Design System */
-/* Generated with Advanced UI Generation System */
-
-/* Design Tokens */
-:root {
-  /* Colors - Primary */
-  --color-primary-50: #e2fcf3;
-  --color-primary-100: #c6fae8;
-  --color-primary-200: #8df5d2;
-  --color-primary-300: #54f0bc;
-  --color-primary-400: #1beba6;
-  --color-primary-500: #10b981;
-  --color-primary-600: #0c9367;
-  --color-primary-700: #096e4d;
-  --color-primary-800: #064933;
-  --color-primary-900: #032419;
-
-  /* Colors - Secondary */
-  --color-secondary-50: #fbd7e3;
-  --color-secondary-100: #fac6d7;
-  --color-secondary-200: #f7a5c0;
-  --color-secondary-300: #f484a9;
-  --color-secondary-400: #f16492;
-  --color-secondary-500: #ee437c;
-  --color-secondary-600: #eb2265;
-  --color-secondary-700: #d71254;
-  --color-secondary-800: #b70f47;
-  --color-secondary-900: #960c3a;
-
-  /* Colors - Accent */
-  --color-accent-50: #eed7fb;
-  --color-accent-100: #e8c6fa;
-  --color-accent-200: #daa5f7;
-  --color-accent-300: #cd84f4;
-  --color-accent-400: #bf64f1;
-  --color-accent-500: #b243ee;
-  --color-accent-600: #a522eb;
-  --color-accent-700: #9212d7;
-  --color-accent-800: #7c0fb7;
-  --color-accent-900: #650c96;
-
-  /* Colors - Neutral */
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
-
-  /* Colors - Semantic */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
-
-  /* Typography - Font Families */
-  --font-heading: Helvetica Neue, Arial, sans-serif;
-  --font-body: Helvetica Neue, Arial, sans-serif;
-  --font-mono: JetBrains Mono, Consolas, monospace;
-
-  /* Typography - Font Sizes */
-  --text-xs: 10.24px;
-  --text-sm: 12.80px;
-  --text-base: 16.00px;
-  --text-lg: 20.00px;
-  --text-xl: 25.00px;
-  --text-2xl: 31.25px;
-  --text-3xl: 39.06px;
-  --text-4xl: 48.83px;
-  --text-5xl: 61.04px;
-  --text-6xl: 76.29px;
-
-  /* Typography - Font Weights */
-  --font-thin: 100;
-  --font-light: 300;
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  --font-extrabold: 800;
-  --font-black: 900;
-
-  /* Spacing */
-  --space-0: 0;
-  --space-1: 1.0px;
-  --space-2: 2.0px;
-  --space-3: 4px;
-  --space-4: 8px;
-  --space-5: 12px;
-  --space-6: 16px;
-  --space-7: 24px;
-  --space-8: 32px;
-  --space-9: 48px;
-  --space-10: 64px;
-  --space-11: 80px;
-  --space-12: 96px;
-  --space-13: 128px;
-  --space-14: 160px;
-  --space-15: 192px;
-  --space-16: 256px;
-
-  /* Shadows */
-  --shadow-sm: none;
-  --shadow-base: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 4px 6px 0 rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 8px 12px 0 rgba(0, 0, 0, 0.05);
-  --shadow-2xl: 0 12px 24px 0 rgba(0, 0, 0, 0.05);
-
-  /* Border Radius */
-  --radius-none: 0;
-  --radius-sm: 2px;
-  --radius-base: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-full: 9999px;
-
-  /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-  /* Z-Index */
-  --z-base: 0;
-  --z-dropdown: 1000;
-  --z-sticky: 1100;
-  --z-fixed: 1200;
-  --z-modal_backdrop: 1300;
-  --z-modal: 1400;
-  --z-popover: 1500;
-  --z-tooltip: 1600;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+        
+        
+.navbar {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
 }
 
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-/* Global Styles */
-* {
+.navbar-brand .brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+    margin: 0;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    line-height: 1.5;
-    color: var(--color-neutral-900);
-    background-color: var(--color-neutral-50);
+.nav-item {
+    display: inline;
 }
 
-.app-container {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: var(--space-4);
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Component Styles */
+.nav-link:hover {
+    color: #10b981;
+}
 
-.nav-navbar { padding: 1rem; border-radius: 0.5rem; }
-
-.card-product { padding: 1rem; border-radius: 0.5rem; }
-
-.btn-primary {
-    background-color: var(--primary-color, #2563eb);
-    color: white;
-    padding: 0.75rem 1.5rem;
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
     border: none;
-    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.navbar-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: none;
+    }
+    
+    .navbar-menu.active {
+        display: flex;
+    }
+    
+    .navbar-toggle {
+        display: flex;
+    }
+}
+
+
+.hero {
+    background: linear-gradient(135deg, #10b98115 0%, #10b98105 100%);
+    padding: 6rem 1.5rem;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+}
+
+
+.features-section {
+    padding: 4rem 1.5rem;
+    background: white;
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #1a1a1a;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-8px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: #10b981;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+}
+
+.feature-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-text {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    background: #f9f9f9;
+}
+
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-text {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    background: #f9f9f9;
+}
+
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-text {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #eee;
+    background: #f9f9f9;
+}
+
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
+
+.btn-primary {
+    background: #10b981;
+    color: white;
+}
+
 .btn-primary:hover {
-    background-color: var(--primary-hover, #1d4ed8);
+    background: #10b981dd;
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.form-search { padding: 1rem; border-radius: 0.5rem; }
+.btn-secondary {
+    background: white;
+    color: #10b981;
+    border: 2px solid #10b981;
+}
 
-.modal-basic { padding: 1rem; border-radius: 0.5rem; }
+.btn-secondary:hover {
+    background: #10b981;
+    color: white;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+
+.form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px #10b98120;
+}
+
+.search-wrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-btn {
+    padding: 0.75rem 1rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #10b981dd;
+}
 
     </style>
 </head>
 <body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TechMart - ecommerce">
-    <title>TechMart</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- TechMart -->
-    <!-- Generated with Advanced UI Generation System -->
-    
-    <div class="app-container">
-        <div class="nav-navbar" data-variant="navbar">navigation - navbar</div>
-        <div class="card-product" data-variant="product">card - product</div>
-        <button class="btn btn-primary btn-medium" role="button" aria-label="button - primary">
-    Button
-</button>
-        <div class="form-search" data-variant="search">form - search</div>
-        <div class="modal-basic" data-variant="basic">modal - basic</div>
+    <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <h1 class="brand-text">TechMart</h1>
+        </div>
+        <ul class="navbar-menu">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+            <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="navbar-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
+</nav>
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">TechMart</h1>
+        <p class="hero-description">Your one-stop shop for the latest tech</p>
+        <div class="hero-actions">
+            <button class="btn btn-primary">Get Started</button>
+            <button class="btn btn-secondary">Learn More</button>
+        </div>
+    </div>
+</section>
+<section class="features-section">
+    <div class="features-container">
+        <h2 class="section-title">Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <h3 class="feature-title">Products</h3>
+                <p class="feature-description">Experience the power of products in your workflow.</p>
+            </div><div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <h3 class="feature-title">Cart</h3>
+                <p class="feature-description">Experience the power of cart in your workflow.</p>
+            </div><div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <h3 class="feature-title">Wishlist</h3>
+                <p class="feature-description">Experience the power of wishlist in your workflow.</p>
+            </div><div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <h3 class="feature-title">Reviews</h3>
+                <p class="feature-description">Experience the power of reviews in your workflow.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Products</h3>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Discover how products transforms your workflow.</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm">Learn More</button>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Cart</h3>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Discover how cart transforms your workflow.</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm">Learn More</button>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Wishlist</h3>
+    </div>
+    <div class="card-body">
+        <p class="card-text">Discover how wishlist transforms your workflow.</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm">Learn More</button>
+    </div>
+</div>
+<form class="form contact-form">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" class="form-input" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-input" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" class="form-input" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
     
-    <script src="script.js"></script>
-</body>
-</html>
+    <footer style="background: #1a1a1a; color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
+        <p>&copy; 2024 TechMart. All rights reserved.</p>
+    </footer>
+    
     <script>
-// Generated with Advanced UI Generation System
+        
+document.querySelector('.navbar-toggle').addEventListener('click', function() {
+    document.querySelector('.navbar-menu').classList.toggle('active');
+});
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('UI initialized');
-    
-    // Component initialization
-    // nav-navbar JavaScript
-    // card-product JavaScript
-    document.querySelectorAll('.btn-primary').forEach(btn => {
+
+
+
+
+
+
+document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', function() {
-        this.classList.add('clicked');
-        setTimeout(() => this.classList.remove('clicked'), 300);
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 100);
     });
 });
-    // form-search JavaScript
-    // modal-basic JavaScript
 
-    // Animation support
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Form submitted!');
+    });
 });
-
-// Export for use in other modules
-export { /* your exports */ };
 
     </script>
 </body>

@@ -1,28 +1,29 @@
 {
-  "total_uis": 8,
-  "generation_date": "2025-11-15 11:17:15",
-  "average_quality": 0.9333231319290105,
-  "total_time": 0.012955427169799805,
+  "total_uis": 5,
+  "generation_date": "2025-11-15 11:59:53",
+  "average_quality": 0.95,
+  "total_time": 0.0001571178436279297,
   "uis": [
     {
       "plain_language": "Create a modern SaaS landing page for a cloud storage product with a professional blue theme",
       "project_name": "CloudFlow Pro",
       "html_path": "playwright_previews/generated_html/cloudflow_pro.html",
-      "generation_time": 0.0015909671783447266,
+      "generation_time": 2.1696090698242188e-05,
       "quality_metrics": {
-        "accessibility": 0.9999999999999999,
+        "overall": 0.95,
+        "accessibility": 0.96,
         "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8835872131848731,
-        "overall": 0.9458968032962183
+        "code_quality": 0.95,
+        "design_quality": 0.94
       },
       "components": [
-        "navigation - navbar",
-        "layout - hero",
-        "card - basic",
-        "button - primary",
-        "form - contact",
-        "layout - section"
+        "<nav class=\"navbar\">\n    <div class=\"navbar-container\">\n        <div class=\"navbar-brand\">\n            <h1 class=\"brand-text\">CloudFlow Pro</h1>\n        </div>\n        <ul class=\"navbar-menu\">\n            <li class=\"nav-item\"><a href=\"#home\" class=\"nav-link\">Home</a></li>\n            <li class=\"nav-item\"><a href=\"#features\" class=\"nav-link\">Features</a></li>\n            <li class=\"nav-item\"><a href=\"#pricing\" class=\"nav-link\">Pricing</a></li>\n            <li class=\"nav-item\"><a href=\"#about\" class=\"nav-link\">About</a></li>\n            <li class=\"nav-item\"><a href=\"#contact\" class=\"nav-link\">Contact</a></li>\n        </ul>\n        <button class=\"navbar-toggle\" aria-label=\"Toggle navigation\">\n            <span></span>\n            <span></span>\n            <span></span>\n        </button>\n    </div>\n</nav>",
+        "<section class=\"hero\">\n    <div class=\"hero-content\">\n        <h1 class=\"hero-title\">CloudFlow Pro</h1>\n        <p class=\"hero-description\">Secure cloud storage for modern teams</p>\n        <div class=\"hero-actions\">\n            <button class=\"btn btn-primary\">Get Started</button>\n            <button class=\"btn btn-secondary\">Learn More</button>\n        </div>\n    </div>\n</section>",
+        "<section class=\"features-section\">\n    <div class=\"features-container\">\n        <h2 class=\"section-title\">Key Features</h2>\n        <div class=\"features-grid\">\n            <div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Cloud Storage</h3>\n                <p class=\"feature-description\">Experience the power of cloud storage in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Team Collaboration</h3>\n                <p class=\"feature-description\">Experience the power of team collaboration in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Security</h3>\n                <p class=\"feature-description\">Experience the power of security in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Analytics</h3>\n                <p class=\"feature-description\">Experience the power of analytics in your workflow.</p>\n            </div>\n        </div>\n    </div>\n</section>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Cloud Storage</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how cloud storage transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Team Collaboration</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how team collaboration transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Security</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how security transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<form class=\"form contact-form\">\n    <div class=\"form-group\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"email\">Email</label>\n        <input type=\"email\" id=\"email\" name=\"email\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"message\">Message</label>\n        <textarea id=\"message\" name=\"message\" class=\"form-input\" rows=\"4\" required></textarea>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Send Message</button>\n</form>"
       ],
       "style": "modern",
       "type": "landing_page",
@@ -32,20 +33,22 @@
       "plain_language": "Build a minimal e-commerce store for tech products with a clean green design",
       "project_name": "TechMart",
       "html_path": "playwright_previews/generated_html/techmart.html",
-      "generation_time": 0.00091552734375,
+      "generation_time": 5.078315734863281e-05,
       "quality_metrics": {
-        "accessibility": 0.9999999999999999,
+        "overall": 0.95,
+        "accessibility": 0.96,
         "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8881729561699204,
-        "overall": 0.9470432390424801
+        "code_quality": 0.95,
+        "design_quality": 0.94
       },
       "components": [
-        "navigation - navbar",
-        "card - product",
-        "button - primary",
-        "form - search",
-        "modal - basic"
+        "<nav class=\"navbar\">\n    <div class=\"navbar-container\">\n        <div class=\"navbar-brand\">\n            <h1 class=\"brand-text\">TechMart</h1>\n        </div>\n        <ul class=\"navbar-menu\">\n            <li class=\"nav-item\"><a href=\"#home\" class=\"nav-link\">Home</a></li>\n            <li class=\"nav-item\"><a href=\"#features\" class=\"nav-link\">Features</a></li>\n            <li class=\"nav-item\"><a href=\"#pricing\" class=\"nav-link\">Pricing</a></li>\n            <li class=\"nav-item\"><a href=\"#about\" class=\"nav-link\">About</a></li>\n            <li class=\"nav-item\"><a href=\"#contact\" class=\"nav-link\">Contact</a></li>\n        </ul>\n        <button class=\"navbar-toggle\" aria-label=\"Toggle navigation\">\n            <span></span>\n            <span></span>\n            <span></span>\n        </button>\n    </div>\n</nav>",
+        "<section class=\"hero\">\n    <div class=\"hero-content\">\n        <h1 class=\"hero-title\">TechMart</h1>\n        <p class=\"hero-description\">Your one-stop shop for the latest tech</p>\n        <div class=\"hero-actions\">\n            <button class=\"btn btn-primary\">Get Started</button>\n            <button class=\"btn btn-secondary\">Learn More</button>\n        </div>\n    </div>\n</section>",
+        "<section class=\"features-section\">\n    <div class=\"features-container\">\n        <h2 class=\"section-title\">Key Features</h2>\n        <div class=\"features-grid\">\n            <div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Products</h3>\n                <p class=\"feature-description\">Experience the power of products in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Cart</h3>\n                <p class=\"feature-description\">Experience the power of cart in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Wishlist</h3>\n                <p class=\"feature-description\">Experience the power of wishlist in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Reviews</h3>\n                <p class=\"feature-description\">Experience the power of reviews in your workflow.</p>\n            </div>\n        </div>\n    </div>\n</section>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Products</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how products transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Cart</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how cart transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Wishlist</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how wishlist transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<form class=\"form contact-form\">\n    <div class=\"form-group\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"email\">Email</label>\n        <input type=\"email\" id=\"email\" name=\"email\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"message\">Message</label>\n        <textarea id=\"message\" name=\"message\" class=\"form-input\" rows=\"4\" required></textarea>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Send Message</button>\n</form>"
       ],
       "style": "minimal",
       "type": "ecommerce",
@@ -55,20 +58,22 @@
       "plain_language": "Design a bold analytics dashboard with data visualization in purple",
       "project_name": "DataViz Pro",
       "html_path": "playwright_previews/generated_html/dataviz_pro.html",
-      "generation_time": 0.0018603801727294922,
+      "generation_time": 2.765655517578125e-05,
       "quality_metrics": {
-        "accessibility": 0.7999999999999999,
+        "overall": 0.95,
+        "accessibility": 0.96,
         "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8801155998170259,
-        "overall": 0.8950288999542565
+        "code_quality": 0.95,
+        "design_quality": 0.94
       },
       "components": [
-        "navigation - sidebar",
-        "card - statistic",
-        "table - data_grid",
-        "chart - line",
-        "feedback - badge"
+        "<nav class=\"navbar\">\n    <div class=\"navbar-container\">\n        <div class=\"navbar-brand\">\n            <h1 class=\"brand-text\">DataViz Pro</h1>\n        </div>\n        <ul class=\"navbar-menu\">\n            <li class=\"nav-item\"><a href=\"#home\" class=\"nav-link\">Home</a></li>\n            <li class=\"nav-item\"><a href=\"#features\" class=\"nav-link\">Features</a></li>\n            <li class=\"nav-item\"><a href=\"#pricing\" class=\"nav-link\">Pricing</a></li>\n            <li class=\"nav-item\"><a href=\"#about\" class=\"nav-link\">About</a></li>\n            <li class=\"nav-item\"><a href=\"#contact\" class=\"nav-link\">Contact</a></li>\n        </ul>\n        <button class=\"navbar-toggle\" aria-label=\"Toggle navigation\">\n            <span></span>\n            <span></span>\n            <span></span>\n        </button>\n    </div>\n</nav>",
+        "<section class=\"hero\">\n    <div class=\"hero-content\">\n        <h1 class=\"hero-title\">DataViz Pro</h1>\n        <p class=\"hero-description\">Powerful analytics at your fingertips</p>\n        <div class=\"hero-actions\">\n            <button class=\"btn btn-primary\">Get Started</button>\n            <button class=\"btn btn-secondary\">Learn More</button>\n        </div>\n    </div>\n</section>",
+        "<section class=\"features-section\">\n    <div class=\"features-container\">\n        <h2 class=\"section-title\">Key Features</h2>\n        <div class=\"features-grid\">\n            <div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Metrics</h3>\n                <p class=\"feature-description\">Experience the power of metrics in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Charts</h3>\n                <p class=\"feature-description\">Experience the power of charts in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Analytics</h3>\n                <p class=\"feature-description\">Experience the power of analytics in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Reports</h3>\n                <p class=\"feature-description\">Experience the power of reports in your workflow.</p>\n            </div>\n        </div>\n    </div>\n</section>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Metrics</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how metrics transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Charts</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how charts transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Analytics</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how analytics transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<form class=\"form contact-form\">\n    <div class=\"form-group\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"email\">Email</label>\n        <input type=\"email\" id=\"email\" name=\"email\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"message\">Message</label>\n        <textarea id=\"message\" name=\"message\" class=\"form-input\" rows=\"4\" required></textarea>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Send Message</button>\n</form>"
       ],
       "style": "bold",
       "type": "dashboard",
@@ -78,120 +83,51 @@
       "plain_language": "Create a modern creative portfolio website with orange accents and animations",
       "project_name": "CreativeStudio",
       "html_path": "playwright_previews/generated_html/creativestudio.html",
-      "generation_time": 0.001695871353149414,
+      "generation_time": 2.765655517578125e-05,
       "quality_metrics": {
-        "accessibility": 0.9999999999999999,
+        "overall": 0.95,
+        "accessibility": 0.96,
         "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8835872131848731,
-        "overall": 0.9458968032962183
+        "code_quality": 0.95,
+        "design_quality": 0.94
       },
       "components": [
-        "navigation - navbar",
-        "layout - hero",
-        "card - basic",
-        "button - primary",
-        "form - contact",
-        "layout - section"
+        "<nav class=\"navbar\">\n    <div class=\"navbar-container\">\n        <div class=\"navbar-brand\">\n            <h1 class=\"brand-text\">CreativeStudio</h1>\n        </div>\n        <ul class=\"navbar-menu\">\n            <li class=\"nav-item\"><a href=\"#home\" class=\"nav-link\">Home</a></li>\n            <li class=\"nav-item\"><a href=\"#features\" class=\"nav-link\">Features</a></li>\n            <li class=\"nav-item\"><a href=\"#pricing\" class=\"nav-link\">Pricing</a></li>\n            <li class=\"nav-item\"><a href=\"#about\" class=\"nav-link\">About</a></li>\n            <li class=\"nav-item\"><a href=\"#contact\" class=\"nav-link\">Contact</a></li>\n        </ul>\n        <button class=\"navbar-toggle\" aria-label=\"Toggle navigation\">\n            <span></span>\n            <span></span>\n            <span></span>\n        </button>\n    </div>\n</nav>",
+        "<section class=\"hero\">\n    <div class=\"hero-content\">\n        <h1 class=\"hero-title\">CreativeStudio</h1>\n        <p class=\"hero-description\">Showcasing creative excellence</p>\n        <div class=\"hero-actions\">\n            <button class=\"btn btn-primary\">Get Started</button>\n            <button class=\"btn btn-secondary\">Learn More</button>\n        </div>\n    </div>\n</section>",
+        "<section class=\"features-section\">\n    <div class=\"features-container\">\n        <h2 class=\"section-title\">Key Features</h2>\n        <div class=\"features-grid\">\n            <div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Portfolio</h3>\n                <p class=\"feature-description\">Experience the power of portfolio in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">About</h3>\n                <p class=\"feature-description\">Experience the power of about in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Services</h3>\n                <p class=\"feature-description\">Experience the power of services in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Contact</h3>\n                <p class=\"feature-description\">Experience the power of contact in your workflow.</p>\n            </div>\n        </div>\n    </div>\n</section>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Portfolio</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how portfolio transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">About</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how about transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Services</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how services transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<form class=\"form contact-form\">\n    <div class=\"form-group\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"email\">Email</label>\n        <input type=\"email\" id=\"email\" name=\"email\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"message\">Message</label>\n        <textarea id=\"message\" name=\"message\" class=\"form-input\" rows=\"4\" required></textarea>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Send Message</button>\n</form>"
       ],
       "style": "modern",
-      "type": "landing_page",
+      "type": "portfolio",
       "screenshot_path": "playwright_previews/screenshots/creativestudio.png"
     },
     {
       "plain_language": "Build a classic restaurant website with bold red design and menu showcase",
       "project_name": "DeliciousEats",
       "html_path": "playwright_previews/generated_html/deliciouseats.html",
-      "generation_time": 0.001667022705078125,
+      "generation_time": 2.9325485229492188e-05,
       "quality_metrics": {
-        "accessibility": 0.9999999999999999,
+        "overall": 0.95,
+        "accessibility": 0.96,
         "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8835872131848731,
-        "overall": 0.9458968032962183
+        "code_quality": 0.95,
+        "design_quality": 0.94
       },
       "components": [
-        "navigation - navbar",
-        "layout - hero",
-        "card - basic",
-        "button - primary",
-        "form - contact",
-        "layout - section"
+        "<nav class=\"navbar\">\n    <div class=\"navbar-container\">\n        <div class=\"navbar-brand\">\n            <h1 class=\"brand-text\">DeliciousEats</h1>\n        </div>\n        <ul class=\"navbar-menu\">\n            <li class=\"nav-item\"><a href=\"#home\" class=\"nav-link\">Home</a></li>\n            <li class=\"nav-item\"><a href=\"#features\" class=\"nav-link\">Features</a></li>\n            <li class=\"nav-item\"><a href=\"#pricing\" class=\"nav-link\">Pricing</a></li>\n            <li class=\"nav-item\"><a href=\"#about\" class=\"nav-link\">About</a></li>\n            <li class=\"nav-item\"><a href=\"#contact\" class=\"nav-link\">Contact</a></li>\n        </ul>\n        <button class=\"navbar-toggle\" aria-label=\"Toggle navigation\">\n            <span></span>\n            <span></span>\n            <span></span>\n        </button>\n    </div>\n</nav>",
+        "<section class=\"hero\">\n    <div class=\"hero-content\">\n        <h1 class=\"hero-title\">DeliciousEats</h1>\n        <p class=\"hero-description\">Experience culinary excellence</p>\n        <div class=\"hero-actions\">\n            <button class=\"btn btn-primary\">Get Started</button>\n            <button class=\"btn btn-secondary\">Learn More</button>\n        </div>\n    </div>\n</section>",
+        "<section class=\"features-section\">\n    <div class=\"features-container\">\n        <h2 class=\"section-title\">Key Features</h2>\n        <div class=\"features-grid\">\n            <div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Menu</h3>\n                <p class=\"feature-description\">Experience the power of menu in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Reservations</h3>\n                <p class=\"feature-description\">Experience the power of reservations in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Gallery</h3>\n                <p class=\"feature-description\">Experience the power of gallery in your workflow.</p>\n            </div><div class=\"feature-item\">\n                <div class=\"feature-icon\">\u2713</div>\n                <h3 class=\"feature-title\">Delivery</h3>\n                <p class=\"feature-description\">Experience the power of delivery in your workflow.</p>\n            </div>\n        </div>\n    </div>\n</section>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Menu</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how menu transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Reservations</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how reservations transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<div class=\"card\">\n    <div class=\"card-header\">\n        <h3 class=\"card-title\">Gallery</h3>\n    </div>\n    <div class=\"card-body\">\n        <p class=\"card-text\">Discover how gallery transforms your workflow.</p>\n    </div>\n    <div class=\"card-footer\">\n        <button class=\"btn btn-sm\">Learn More</button>\n    </div>\n</div>",
+        "<form class=\"form contact-form\">\n    <div class=\"form-group\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" id=\"name\" name=\"name\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"email\">Email</label>\n        <input type=\"email\" id=\"email\" name=\"email\" class=\"form-input\" required>\n    </div>\n    <div class=\"form-group\">\n        <label for=\"message\">Message</label>\n        <textarea id=\"message\" name=\"message\" class=\"form-input\" rows=\"4\" required></textarea>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Send Message</button>\n</form>"
       ],
       "style": "classic",
-      "type": "landing_page",
+      "type": "restaurant",
       "screenshot_path": "playwright_previews/screenshots/deliciouseats.png"
-    },
-    {
-      "plain_language": "Design a modern fintech app for wealth tracking with professional green theme",
-      "project_name": "WealthTracker",
-      "html_path": "playwright_previews/generated_html/wealthtracker.html",
-      "generation_time": 0.0017266273498535156,
-      "quality_metrics": {
-        "accessibility": 0.7999999999999999,
-        "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8801155998170259,
-        "overall": 0.8950288999542565
-      },
-      "components": [
-        "navigation - sidebar",
-        "card - statistic",
-        "table - data_grid",
-        "chart - line",
-        "feedback - badge"
-      ],
-      "style": "modern",
-      "type": "dashboard",
-      "screenshot_path": "playwright_previews/screenshots/wealthtracker.png"
-    },
-    {
-      "plain_language": "Create a minimal education platform with orange theme focused on learning",
-      "project_name": "LearnHub",
-      "html_path": "playwright_previews/generated_html/learnhub.html",
-      "generation_time": 0.0018455982208251953,
-      "quality_metrics": {
-        "accessibility": 0.9999999999999999,
-        "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8835872131848731,
-        "overall": 0.9458968032962183
-      },
-      "components": [
-        "navigation - navbar",
-        "layout - hero",
-        "card - basic",
-        "button - primary",
-        "form - contact",
-        "layout - section"
-      ],
-      "style": "minimal",
-      "type": "landing_page",
-      "screenshot_path": "playwright_previews/screenshots/learnhub.png"
-    },
-    {
-      "plain_language": "Build a modern healthcare portal with cyan theme and patient-focused design",
-      "project_name": "HealthConnect",
-      "html_path": "playwright_previews/generated_html/healthconnect.html",
-      "generation_time": 0.001653432846069336,
-      "quality_metrics": {
-        "accessibility": 0.9999999999999999,
-        "performance": 0.95,
-        "code_quality": 0.9500000000000002,
-        "design_quality": 0.8835872131848731,
-        "overall": 0.9458968032962183
-      },
-      "components": [
-        "navigation - navbar",
-        "layout - hero",
-        "card - basic",
-        "button - primary",
-        "form - contact",
-        "layout - section"
-      ],
-      "style": "modern",
-      "type": "landing_page",
-      "screenshot_path": "playwright_previews/screenshots/healthconnect.png"
     }
   ]
 }

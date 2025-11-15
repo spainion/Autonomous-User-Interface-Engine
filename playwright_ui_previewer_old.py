@@ -1,9 +1,7 @@
 """
-Playwright UI Previewer - FIXED VERSION
+Playwright UI Previewer
 Demonstrates the autonomous UI engine's ability to interpret plain language
 and generate beautiful, usable user interfaces with live browser previews.
-
-This version generates proper, working UI components instead of placeholders.
 """
 
 import os
@@ -12,57 +10,132 @@ import time
 from pathlib import Path
 from typing import List, Dict, Any
 from playwright.async_api import async_playwright
+from complete_ui_generator import CompleteUIGenerator, CompleteUIRequest
 import json
-from rich_component_library import RichComponentLibrary
 
 
-# Plain language UI requests
+# Plain language UI requests - demonstrating natural language interpretation
 PLAIN_LANGUAGE_REQUESTS = [
     {
         "plain_language": "Create a modern SaaS landing page for a cloud storage product with a professional blue theme",
-        "project_name": "CloudFlow Pro",
-        "project_type": "landing_page",
-        "style": "modern",
-        "primary_color": "#3b82f6",
-        "description": "Secure cloud storage for modern teams",
-        "key_features": ["Cloud Storage", "Team Collaboration", "Security", "Analytics"]
+        "request": CompleteUIRequest(
+            project_name="CloudFlow Pro",
+            project_type="landing_page",
+            style="modern",
+            primary_color="#3b82f6",
+            target_audience="businesses",
+            key_features=["Cloud Storage", "Team Collaboration", "Security", "Analytics"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
     },
     {
         "plain_language": "Build a minimal e-commerce store for tech products with a clean green design",
-        "project_name": "TechMart",
-        "project_type": "ecommerce",
-        "style": "minimal",
-        "primary_color": "#10b981",
-        "description": "Your one-stop shop for the latest tech",
-        "key_features": ["Products", "Cart", "Wishlist", "Reviews"]
+        "request": CompleteUIRequest(
+            project_name="TechMart",
+            project_type="ecommerce",
+            style="minimal",
+            primary_color="#10b981",
+            target_audience="consumers",
+            key_features=["Products", "Cart", "Wishlist", "Reviews"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
     },
     {
         "plain_language": "Design a bold analytics dashboard with data visualization in purple",
-        "project_name": "DataViz Pro",
-        "project_type": "dashboard",
-        "style": "bold",
-        "primary_color": "#8b5cf6",
-        "description": "Powerful analytics at your fingertips",
-        "key_features": ["Metrics", "Charts", "Analytics", "Reports"]
+        "request": CompleteUIRequest(
+            project_name="DataViz Pro",
+            project_type="dashboard",
+            style="bold",
+            primary_color="#8b5cf6",
+            target_audience="analysts",
+            key_features=["Metrics", "Charts", "Analytics", "Reports"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
     },
     {
         "plain_language": "Create a modern creative portfolio website with orange accents and animations",
-        "project_name": "CreativeStudio",
-        "project_type": "portfolio",
-        "style": "modern",
-        "primary_color": "#f59e0b",
-        "description": "Showcasing creative excellence",
-        "key_features": ["Portfolio", "About", "Services", "Contact"]
+        "request": CompleteUIRequest(
+            project_name="CreativeStudio",
+            project_type="landing_page",
+            style="modern",
+            primary_color="#f59e0b",
+            target_audience="clients",
+            key_features=["Portfolio", "About", "Services", "Contact"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
     },
     {
         "plain_language": "Build a classic restaurant website with bold red design and menu showcase",
-        "project_name": "DeliciousEats",
-        "project_type": "restaurant",
-        "style": "classic",
-        "primary_color": "#dc2626",
-        "description": "Experience culinary excellence",
-        "key_features": ["Menu", "Reservations", "Gallery", "Delivery"]
+        "request": CompleteUIRequest(
+            project_name="DeliciousEats",
+            project_type="landing_page",
+            style="classic",
+            primary_color="#dc2626",
+            target_audience="diners",
+            key_features=["Menu", "Reservations", "Gallery", "Delivery"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=False
+        )
     },
+    {
+        "plain_language": "Design a modern fintech app for wealth tracking with professional green theme",
+        "request": CompleteUIRequest(
+            project_name="WealthTracker",
+            project_type="dashboard",
+            style="modern",
+            primary_color="#059669",
+            target_audience="investors",
+            key_features=["Balance", "Investments", "Goals", "Reports"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
+    },
+    {
+        "plain_language": "Create a minimal education platform with orange theme focused on learning",
+        "request": CompleteUIRequest(
+            project_name="LearnHub",
+            project_type="landing_page",
+            style="minimal",
+            primary_color="#f97316",
+            target_audience="students",
+            key_features=["Courses", "Progress", "Certificates", "Community"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
+    },
+    {
+        "plain_language": "Build a modern healthcare portal with cyan theme and patient-focused design",
+        "request": CompleteUIRequest(
+            project_name="HealthConnect",
+            project_type="landing_page",
+            style="modern",
+            primary_color="#06b6d4",
+            target_audience="patients",
+            key_features=["Appointments", "Records", "Doctors", "Telemedicine"],
+            framework="custom",
+            responsive=True,
+            accessibility=True,
+            animations=True
+        )
+    }
 ]
 
 
@@ -77,141 +150,59 @@ class PlaywrightUIPreviewer:
         self.screenshots_dir.mkdir(exist_ok=True)
         self.html_dir = self.output_dir / "generated_html"
         self.html_dir.mkdir(exist_ok=True)
-        self.components = RichComponentLibrary()
+        self.generator = CompleteUIGenerator()
         self.results: List[Dict[str, Any]] = []
     
-    def generate_ui_from_plain_language(self, request_data: dict) -> Dict[str, Any]:
+    def generate_ui_from_plain_language(self, plain_language: str, request: CompleteUIRequest) -> Dict[str, Any]:
         """Generate UI from plain language description"""
         print(f"\n{'='*80}")
-        print(f"Plain Language: {request_data['plain_language']}")
+        print(f"Plain Language: {plain_language}")
         print(f"{'='*80}")
         
         start_time = time.time()
+        result = self.generator.generate_complete_ui(request)
+        generation_time = time.time() - start_time
         
-        # Generate components
-        html_parts = []
-        css_parts = []
-        js_parts = []
+        # Save HTML file
+        safe_name = self._sanitize_filename(request.project_name)
+        html_path = self.html_dir / f"{safe_name}.html"
         
-        # Generate navbar
-        nav_html, nav_css, nav_js = self.components.generate_navbar(
-            request_data['project_name'],
-            request_data['primary_color']
-        )
-        html_parts.append(nav_html)
-        css_parts.append(nav_css)
-        js_parts.append(nav_js)
-        
-        # Generate hero
-        hero_html, hero_css, hero_js = self.components.generate_hero(
-            request_data['project_name'],
-            request_data['description'],
-            request_data['primary_color']
-        )
-        html_parts.append(hero_html)
-        css_parts.append(hero_css)
-        js_parts.append(hero_js)
-        
-        # Generate features section
-        features_html, features_css, features_js = self.components.generate_features_section(
-            request_data['key_features'],
-            request_data['primary_color']
-        )
-        html_parts.append(features_html)
-        css_parts.append(features_css)
-        js_parts.append(features_js)
-        
-        # Generate cards
-        for i, feature in enumerate(request_data['key_features'][:3]):
-            card_html, card_css, card_js = self.components.generate_card(
-                feature,
-                f"Discover how {feature.lower()} transforms your workflow.",
-                "basic"
-            )
-            html_parts.append(card_html)
-            css_parts.append(card_css)
-            js_parts.append(card_js)
-        
-        # Generate button (adds button styles)
-        _, btn_css, btn_js = self.components.generate_button(request_data['primary_color'])
-        css_parts.append(btn_css)
-        js_parts.append(btn_js)
-        
-        # Generate form
-        form_html, form_css, form_js = self.components.generate_form(
-            "contact",
-            request_data['primary_color']
-        )
-        html_parts.append(form_html)
-        css_parts.append(form_css)
-        js_parts.append(form_js)
-        
-        # Assemble complete HTML
-        complete_html = f'''<!DOCTYPE html>
+        # Create complete HTML with embedded CSS and JS
+        complete_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{request_data['project_name']}</title>
+    <title>{request.project_name}</title>
     <style>
-        * {{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }}
-        
-        body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f9f9f9;
-        }}
-        
-        {chr(10).join(css_parts)}
+{result.css}
     </style>
 </head>
 <body>
-    {chr(10).join(html_parts)}
-    
-    <footer style="background: #1a1a1a; color: white; text-align: center; padding: 2rem; margin-top: 4rem;">
-        <p>&copy; 2024 {request_data['project_name']}. All rights reserved.</p>
-    </footer>
-    
+{result.html}
     <script>
-        {chr(10).join(js_parts)}
+{result.javascript}
     </script>
 </body>
-</html>'''
-        
-        generation_time = time.time() - start_time
-        
-        # Save HTML file
-        safe_name = self._sanitize_filename(request_data['project_name'])
-        html_path = self.html_dir / f"{safe_name}.html"
+</html>"""
         
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(complete_html)
         
         print(f"✓ Generated in {generation_time:.3f}s")
-        print(f"✓ Quality: 95.0%")
-        print(f"✓ Components: {len(html_parts)}")
+        print(f"✓ Quality: {result.quality_metrics['overall']:.1%}")
+        print(f"✓ Components: {len(result.components_used)}")
         print(f"✓ Saved to: {html_path}")
         
         return {
-            'plain_language': request_data['plain_language'],
-            'project_name': request_data['project_name'],
+            'plain_language': plain_language,
+            'project_name': request.project_name,
             'html_path': str(html_path),
             'generation_time': generation_time,
-            'quality_metrics': {
-                'overall': 0.95,
-                'accessibility': 0.96,
-                'performance': 0.95,
-                'code_quality': 0.95,
-                'design_quality': 0.94
-            },
-            'components': html_parts,
-            'style': request_data['style'],
-            'type': request_data['project_type']
+            'quality_metrics': result.quality_metrics,
+            'components': result.components_used,
+            'style': request.style,
+            'type': request.project_type
         }
     
     async def capture_screenshot(self, html_path: str, screenshot_path: str, width: int = 1920, height: int = 1080):
@@ -234,8 +225,8 @@ class PlaywrightUIPreviewer:
     async def preview_and_capture_all(self):
         """Generate UIs and capture screenshots for all plain language requests"""
         print("\n" + "="*80)
-        print("  PLAYWRIGHT UI PREVIEWER - FIXED VERSION")
-        print("  Generating Proper, Working UI Components")
+        print("  PLAYWRIGHT UI PREVIEWER")
+        print("  Demonstrating Plain Language to Beautiful UI")
         print("="*80)
         print(f"Total Requests: {len(PLAIN_LANGUAGE_REQUESTS)}")
         print(f"Output Directory: {self.output_dir}")
@@ -245,7 +236,10 @@ class PlaywrightUIPreviewer:
             print(f"\n[{i}/{len(PLAIN_LANGUAGE_REQUESTS)}] Processing...")
             
             # Generate UI
-            result = self.generate_ui_from_plain_language(item)
+            result = self.generate_ui_from_plain_language(
+                item['plain_language'],
+                item['request']
+            )
             
             # Capture screenshot
             safe_name = self._sanitize_filename(result['project_name'])
@@ -510,7 +504,7 @@ class PlaywrightUIPreviewer:
         <header>
             <h1>🎨 Autonomous UI Engine</h1>
             <p>Plain Language → Beautiful User Interfaces</p>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">✨ Fixed Version - Proper Working Components</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Demonstrating AI-powered UI generation with Playwright previews</p>
         </header>
         
         <div class="stats">
@@ -535,7 +529,7 @@ class PlaywrightUIPreviewer:
         <footer>
             <p>Generated by the Autonomous User Interface Engine</p>
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                All UIs were generated from plain language descriptions with proper, working components
+                All UIs were generated from plain language descriptions using AI and Playwright for previews
             </p>
         </footer>
     </div>
@@ -560,7 +554,7 @@ class PlaywrightUIPreviewer:
         
         manifest_path = self.output_dir / "manifest.json"
         with open(manifest_path, 'w') as f:
-            json.dump(manifest, f, indent=2, default=str)
+            json.dump(manifest, f, indent=2)
         
         print(f"✓ Manifest saved: {manifest_path}")
     
