@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous UI Engine - Playwright Preview Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-item-header h3 {
+            flex: 1;
+            font-size: 1.5rem;
+        }
+        
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .plain-language {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+        }
+        
+        .plain-language strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .plain-language p {
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .screenshot-container {
+            width: 100%;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .screenshot-container img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-footer {
+            padding: 1.5rem;
+        }
+        
+        .metrics {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .metric {
+            padding: 0.5rem 1rem;
+            background: #e9ecef;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 4rem;
+            padding: 2rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Autonomous UI Engine</h1>
+            <p>Plain Language → Beautiful User Interfaces</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Demonstrating AI-powered UI generation with Playwright previews</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Generated UIs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">0.01s</div>
+                <div class="stat-label">Total Generation Time</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">93.3%</div>
+                <div class="stat-label">Average Quality</div>
+            </div>
+        </div>
+        
+        <div class="gallery">
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>CloudFlow Pro</h3>
+                        <span class="badge badge-modern">modern</span>
+                        <span class="badge badge-landing_page">landing_page</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Create a modern SaaS landing page for a cloud storage product with a professional blue theme"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/cloudflow_pro.png" alt="CloudFlow Pro" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 94.6%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/cloudflow_pro.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>TechMart</h3>
+                        <span class="badge badge-minimal">minimal</span>
+                        <span class="badge badge-ecommerce">ecommerce</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Build a minimal e-commerce store for tech products with a clean green design"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/techmart.png" alt="TechMart" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 94.7%</span>
+                            <span class="metric">Generated in: 0.001s</span>
+                            <span class="metric">Components: 5</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/techmart.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>DataViz Pro</h3>
+                        <span class="badge badge-bold">bold</span>
+                        <span class="badge badge-dashboard">dashboard</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Design a bold analytics dashboard with data visualization in purple"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/dataviz_pro.png" alt="DataViz Pro" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 89.5%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 5</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/dataviz_pro.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>CreativeStudio</h3>
+                        <span class="badge badge-modern">modern</span>
+                        <span class="badge badge-landing_page">landing_page</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Create a modern creative portfolio website with orange accents and animations"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/creativestudio.png" alt="CreativeStudio" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 94.6%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/creativestudio.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>DeliciousEats</h3>
+                        <span class="badge badge-classic">classic</span>
+                        <span class="badge badge-landing_page">landing_page</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Build a classic restaurant website with bold red design and menu showcase"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/deliciouseats.png" alt="DeliciousEats" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 94.6%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/deliciouseats.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>WealthTracker</h3>
+                        <span class="badge badge-modern">modern</span>
+                        <span class="badge badge-dashboard">dashboard</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Design a modern fintech app for wealth tracking with professional green theme"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/wealthtracker.png" alt="WealthTracker" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 89.5%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 5</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/wealthtracker.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>LearnHub</h3>
+                        <span class="badge badge-minimal">minimal</span>
+                        <span class="badge badge-landing_page">landing_page</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Create a minimal education platform with orange theme focused on learning"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/learnhub.png" alt="LearnHub" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 94.6%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/learnhub.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item">
+                    <div class="gallery-item-header">
+                        <h3>HealthConnect</h3>
+                        <span class="badge badge-modern">modern</span>
+                        <span class="badge badge-landing_page">landing_page</span>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Build a modern healthcare portal with cyan theme and patient-focused design"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/healthconnect.png" alt="HealthConnect" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 94.6%</span>
+                            <span class="metric">Generated in: 0.002s</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/healthconnect.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        
+        <footer>
+            <p>Generated by the Autonomous User Interface Engine</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                All UIs were generated from plain language descriptions using AI and Playwright for previews
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

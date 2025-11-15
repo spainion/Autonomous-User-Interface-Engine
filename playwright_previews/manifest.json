@@ -1,0 +1,197 @@
+{
+  "total_uis": 8,
+  "generation_date": "2025-11-15 11:17:15",
+  "average_quality": 0.9333231319290105,
+  "total_time": 0.012955427169799805,
+  "uis": [
+    {
+      "plain_language": "Create a modern SaaS landing page for a cloud storage product with a professional blue theme",
+      "project_name": "CloudFlow Pro",
+      "html_path": "playwright_previews/generated_html/cloudflow_pro.html",
+      "generation_time": 0.0015909671783447266,
+      "quality_metrics": {
+        "accessibility": 0.9999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8835872131848731,
+        "overall": 0.9458968032962183
+      },
+      "components": [
+        "navigation - navbar",
+        "layout - hero",
+        "card - basic",
+        "button - primary",
+        "form - contact",
+        "layout - section"
+      ],
+      "style": "modern",
+      "type": "landing_page",
+      "screenshot_path": "playwright_previews/screenshots/cloudflow_pro.png"
+    },
+    {
+      "plain_language": "Build a minimal e-commerce store for tech products with a clean green design",
+      "project_name": "TechMart",
+      "html_path": "playwright_previews/generated_html/techmart.html",
+      "generation_time": 0.00091552734375,
+      "quality_metrics": {
+        "accessibility": 0.9999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8881729561699204,
+        "overall": 0.9470432390424801
+      },
+      "components": [
+        "navigation - navbar",
+        "card - product",
+        "button - primary",
+        "form - search",
+        "modal - basic"
+      ],
+      "style": "minimal",
+      "type": "ecommerce",
+      "screenshot_path": "playwright_previews/screenshots/techmart.png"
+    },
+    {
+      "plain_language": "Design a bold analytics dashboard with data visualization in purple",
+      "project_name": "DataViz Pro",
+      "html_path": "playwright_previews/generated_html/dataviz_pro.html",
+      "generation_time": 0.0018603801727294922,
+      "quality_metrics": {
+        "accessibility": 0.7999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8801155998170259,
+        "overall": 0.8950288999542565
+      },
+      "components": [
+        "navigation - sidebar",
+        "card - statistic",
+        "table - data_grid",
+        "chart - line",
+        "feedback - badge"
+      ],
+      "style": "bold",
+      "type": "dashboard",
+      "screenshot_path": "playwright_previews/screenshots/dataviz_pro.png"
+    },
+    {
+      "plain_language": "Create a modern creative portfolio website with orange accents and animations",
+      "project_name": "CreativeStudio",
+      "html_path": "playwright_previews/generated_html/creativestudio.html",
+      "generation_time": 0.001695871353149414,
+      "quality_metrics": {
+        "accessibility": 0.9999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8835872131848731,
+        "overall": 0.9458968032962183
+      },
+      "components": [
+        "navigation - navbar",
+        "layout - hero",
+        "card - basic",
+        "button - primary",
+        "form - contact",
+        "layout - section"
+      ],
+      "style": "modern",
+      "type": "landing_page",
+      "screenshot_path": "playwright_previews/screenshots/creativestudio.png"
+    },
+    {
+      "plain_language": "Build a classic restaurant website with bold red design and menu showcase",
+      "project_name": "DeliciousEats",
+      "html_path": "playwright_previews/generated_html/deliciouseats.html",
+      "generation_time": 0.001667022705078125,
+      "quality_metrics": {
+        "accessibility": 0.9999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8835872131848731,
+        "overall": 0.9458968032962183
+      },
+      "components": [
+        "navigation - navbar",
+        "layout - hero",
+        "card - basic",
+        "button - primary",
+        "form - contact",
+        "layout - section"
+      ],
+      "style": "classic",
+      "type": "landing_page",
+      "screenshot_path": "playwright_previews/screenshots/deliciouseats.png"
+    },
+    {
+      "plain_language": "Design a modern fintech app for wealth tracking with professional green theme",
+      "project_name": "WealthTracker",
+      "html_path": "playwright_previews/generated_html/wealthtracker.html",
+      "generation_time": 0.0017266273498535156,
+      "quality_metrics": {
+        "accessibility": 0.7999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8801155998170259,
+        "overall": 0.8950288999542565
+      },
+      "components": [
+        "navigation - sidebar",
+        "card - statistic",
+        "table - data_grid",
+        "chart - line",
+        "feedback - badge"
+      ],
+      "style": "modern",
+      "type": "dashboard",
+      "screenshot_path": "playwright_previews/screenshots/wealthtracker.png"
+    },
+    {
+      "plain_language": "Create a minimal education platform with orange theme focused on learning",
+      "project_name": "LearnHub",
+      "html_path": "playwright_previews/generated_html/learnhub.html",
+      "generation_time": 0.0018455982208251953,
+      "quality_metrics": {
+        "accessibility": 0.9999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8835872131848731,
+        "overall": 0.9458968032962183
+      },
+      "components": [
+        "navigation - navbar",
+        "layout - hero",
+        "card - basic",
+        "button - primary",
+        "form - contact",
+        "layout - section"
+      ],
+      "style": "minimal",
+      "type": "landing_page",
+      "screenshot_path": "playwright_previews/screenshots/learnhub.png"
+    },
+    {
+      "plain_language": "Build a modern healthcare portal with cyan theme and patient-focused design",
+      "project_name": "HealthConnect",
+      "html_path": "playwright_previews/generated_html/healthconnect.html",
+      "generation_time": 0.001653432846069336,
+      "quality_metrics": {
+        "accessibility": 0.9999999999999999,
+        "performance": 0.95,
+        "code_quality": 0.9500000000000002,
+        "design_quality": 0.8835872131848731,
+        "overall": 0.9458968032962183
+      },
+      "components": [
+        "navigation - navbar",
+        "layout - hero",
+        "card - basic",
+        "button - primary",
+        "form - contact",
+        "layout - section"
+      ],
+      "style": "modern",
+      "type": "landing_page",
+      "screenshot_path": "playwright_previews/screenshots/healthconnect.png"
+    }
+  ]
+}

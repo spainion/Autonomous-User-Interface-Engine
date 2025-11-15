@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreativeStudio</title>
+    <style>
+/* CreativeStudio Design System */
+/* Generated with Advanced UI Generation System */
+
+/* Design Tokens */
+:root {
+  /* Colors - Primary */
+  --color-primary-50: #fef5e6;
+  --color-primary-100: #fdebce;
+  --color-primary-200: #fbd89d;
+  --color-primary-300: #f9c46c;
+  --color-primary-400: #f7b13b;
+  --color-primary-500: #f59e0b;
+  --color-primary-600: #c47e08;
+  --color-primary-700: #935e06;
+  --color-primary-800: #623f04;
+  --color-primary-900: #311f02;
+
+  /* Colors - Secondary */
+  --color-secondary-50: #d5e4fd;
+  --color-secondary-100: #c4d9fc;
+  --color-secondary-200: #a1c3fb;
+  --color-secondary-300: #7fadf9;
+  --color-secondary-400: #5d96f8;
+  --color-secondary-500: #3b80f6;
+  --color-secondary-600: #186af5;
+  --color-secondary-700: #0959e1;
+  --color-secondary-800: #074bbf;
+  --color-secondary-900: #063e9c;
+
+  /* Colors - Accent */
+  --color-accent-50: #d5fded;
+  --color-accent-100: #c4fce6;
+  --color-accent-200: #a1fbd8;
+  --color-accent-300: #7ff9c9;
+  --color-accent-400: #5df8bb;
+  --color-accent-500: #3bf6ad;
+  --color-accent-600: #18f59f;
+  --color-accent-700: #09e18c;
+  --color-accent-800: #07bf77;
+  --color-accent-900: #069c61;
+
+  /* Colors - Neutral */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+
+  /* Colors - Semantic */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Typography - Font Families */
+  --font-heading: Inter, system-ui, sans-serif;
+  --font-body: Inter, system-ui, sans-serif;
+  --font-mono: JetBrains Mono, Consolas, monospace;
+
+  /* Typography - Font Sizes */
+  --text-xs: 10.24px;
+  --text-sm: 12.80px;
+  --text-base: 16.00px;
+  --text-lg: 20.00px;
+  --text-xl: 25.00px;
+  --text-2xl: 31.25px;
+  --text-3xl: 39.06px;
+  --text-4xl: 48.83px;
+  --text-5xl: 61.04px;
+  --text-6xl: 76.29px;
+
+  /* Typography - Font Weights */
+  --font-thin: 100;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1.0px;
+  --space-2: 2.0px;
+  --space-3: 4px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+  --space-13: 128px;
+  --space-14: 160px;
+  --space-15: 192px;
+  --space-16: 256px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-sm: 3px;
+  --radius-base: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Z-Index */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-fixed: 1200;
+  --z-modal_backdrop: 1300;
+  --z-modal: 1400;
+  --z-popover: 1500;
+  --z-tooltip: 1600;
+}
+
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    color: var(--color-neutral-900);
+    background-color: var(--color-neutral-50);
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: var(--space-4);
+}
+
+/* Component Styles */
+
+.nav-navbar { padding: 1rem; border-radius: 0.5rem; }
+
+.layout-hero { padding: 1rem; border-radius: 0.5rem; }
+
+.card-basic { padding: 1rem; border-radius: 0.5rem; }
+
+.btn-primary {
+    background-color: var(--primary-color, #2563eb);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover, #1d4ed8);
+    transform: translateY(-2px);
+}
+
+.form-contact { padding: 1rem; border-radius: 0.5rem; }
+
+.layout-section { padding: 1rem; border-radius: 0.5rem; }
+
+    </style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CreativeStudio - landing_page">
+    <title>CreativeStudio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- CreativeStudio -->
+    <!-- Generated with Advanced UI Generation System -->
+    
+    <div class="app-container">
+        <div class="nav-navbar" data-variant="navbar">navigation - navbar</div>
+        <div class="layout-hero" data-variant="hero">layout - hero</div>
+        <div class="card-basic" data-variant="basic">card - basic</div>
+        <button class="btn btn-primary btn-medium" role="button" aria-label="button - primary">
+    Button
+</button>
+        <div class="form-contact" data-variant="contact">form - contact</div>
+        <div class="layout-section" data-variant="section">layout - section</div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+    <script>
+// Generated with Advanced UI Generation System
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('UI initialized');
+    
+    // Component initialization
+    // nav-navbar JavaScript
+    // layout-hero JavaScript
+    // card-basic JavaScript
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', function() {
+        this.classList.add('clicked');
+        setTimeout(() => this.classList.remove('clicked'), 300);
+    });
+});
+    // form-contact JavaScript
+    // layout-section JavaScript
+
+    // Animation support
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+});
+
+// Export for use in other modules
+export { /* your exports */ };
+
+    </script>
+</body>
+</html>
