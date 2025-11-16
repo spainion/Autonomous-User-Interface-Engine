@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous UI Engine - Playwright Preview Gallery</title>
+    <title>Autonomous UI Engine - Advanced Gallery</title>
     <style>
         * {
             margin: 0;
@@ -12,14 +12,14 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             padding: 2rem;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
         
@@ -30,42 +30,96 @@
         }
         
         header h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         header p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.3rem);
             opacity: 0.9;
         }
         
         .stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
             margin: 2rem 0;
-            flex-wrap: wrap;
         }
         
         .stat {
             background: white;
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             text-align: center;
         }
         
         .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .stat-label {
             font-size: 0.9rem;
             color: #666;
             margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .filters {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .filter-section h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            background: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
         }
         
         .gallery {
@@ -77,38 +131,45 @@
         
         .gallery-item {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item.hidden {
+            display: none;
         }
         
         .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         
         .gallery-item-header {
             padding: 1.5rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
         }
         
         .gallery-item-header h3 {
-            flex: 1;
             font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
         .badge {
-            padding: 0.3rem 0.8rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
         }
         
         .plain-language {
@@ -133,6 +194,7 @@
             width: 100%;
             overflow: hidden;
             background: #f0f0f0;
+            max-height: 600px;
         }
         
         .screenshot-container img {
@@ -142,7 +204,7 @@
         }
         
         .gallery-item:hover .screenshot-container img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         
         .gallery-item-footer {
@@ -159,9 +221,9 @@
         .metric {
             padding: 0.5rem 1rem;
             background: #e9ecef;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
         }
         
         .actions {
@@ -171,17 +233,18 @@
         
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 1.75rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: transform 0.2s ease;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.2s ease;
         }
         
         .btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
         }
         
         footer {
@@ -197,8 +260,8 @@
                 grid-template-columns: 1fr;
             }
             
-            header h1 {
-                font-size: 2rem;
+            body {
+                padding: 1rem;
             }
         }
     </style>
@@ -206,149 +269,284 @@
 <body>
     <div class="container">
         <header>
-            <h1>🎨 Autonomous UI Engine</h1>
-            <p>Plain Language → Beautiful User Interfaces</p>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem;">✨ Fixed Version - Proper Working Components</p>
+            <h1>🎨 Advanced UI Engine</h1>
+            <p>Diverse Styles | Multiple Fonts | Advanced Components</p>
         </header>
         
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">5</div>
+                <div class="stat-value">8</div>
                 <div class="stat-label">Generated UIs</div>
             </div>
             <div class="stat">
-                <div class="stat-value">0.00s</div>
-                <div class="stat-label">Total Generation Time</div>
+                <div class="stat-value">7</div>
+                <div class="stat-label">Unique Styles</div>
             </div>
             <div class="stat">
-                <div class="stat-value">95.0%</div>
-                <div class="stat-label">Average Quality</div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">Font Families</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">97%</div>
+                <div class="stat-label">Avg Quality</div>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-section">
+                <h3>Filter by Style</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter-style="all">All Styles</button>
+                    <button class="filter-btn" data-filter-style="classic">Classic</button><button class="filter-btn" data-filter-style="glassmorphic">Glassmorphic</button><button class="filter-btn" data-filter-style="minimal">Minimal</button><button class="filter-btn" data-filter-style="modern">Modern</button><button class="filter-btn" data-filter-style="neumorphic">Neumorphic</button><button class="filter-btn" data-filter-style="playful">Playful</button><button class="filter-btn" data-filter-style="technical">Technical</button>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3>Filter by Font</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter-font="all">All Fonts</button>
+                    <button class="filter-btn" data-filter-font="elegant">Elegant</button><button class="filter-btn" data-filter-font="minimal">Minimal</button><button class="filter-btn" data-filter-font="modern">Modern</button><button class="filter-btn" data-filter-font="playful">Playful</button><button class="filter-btn" data-filter-font="technical">Technical</button>
+                </div>
             </div>
         </div>
         
         <div class="gallery">
             
-                <div class="gallery-item">
+                <div class="gallery-item" data-style="modern" data-font="modern">
                     <div class="gallery-item-header">
-                        <h3>CloudFlow Pro</h3>
-                        <span class="badge badge-modern">modern</span>
-                        <span class="badge badge-landing_page">landing_page</span>
+                        <div>
+                            <h3>Analytics Pro</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">modern</span>
+                                <span class="badge badge-font">modern font</span>
+                                <span class="badge badge-type">dashboard</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="plain-language">
                         <strong>Plain Language Input:</strong>
-                        <p>"Create a modern SaaS landing page for a cloud storage product with a professional blue theme"</p>
+                        <p>"Create an elegant SaaS dashboard with modern typography, data charts, and advanced panels in deep blue"</p>
                     </div>
                     <div class="screenshot-container">
-                        <img src="screenshots/cloudflow_pro.png" alt="CloudFlow Pro" loading="lazy">
+                        <img src="screenshots/analytics_pro.png" alt="Analytics Pro" loading="lazy">
                     </div>
                     <div class="gallery-item-footer">
                         <div class="metrics">
-                            <span class="metric">Quality: 95.0%</span>
-                            <span class="metric">Generated in: 0.000s</span>
-                            <span class="metric">Components: 7</span>
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
                         </div>
                         <div class="actions">
-                            <a href="generated_html/cloudflow_pro.html" target="_blank" class="btn">View Live</a>
+                            <a href="generated_html/analytics_pro.html" target="_blank" class="btn">View Live</a>
                         </div>
                     </div>
                 </div>
             
-                <div class="gallery-item">
+                <div class="gallery-item" data-style="playful" data-font="playful">
                     <div class="gallery-item-header">
-                        <h3>TechMart</h3>
-                        <span class="badge badge-minimal">minimal</span>
-                        <span class="badge badge-ecommerce">ecommerce</span>
+                        <div>
+                            <h3>LearnHub Plus</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">playful</span>
+                                <span class="badge badge-font">playful font</span>
+                                <span class="badge badge-type">education</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="plain-language">
                         <strong>Plain Language Input:</strong>
-                        <p>"Build a minimal e-commerce store for tech products with a clean green design"</p>
+                        <p>"Build a playful e-learning platform with interactive charts, colorful buttons, and responsive design in vibrant orange"</p>
                     </div>
                     <div class="screenshot-container">
-                        <img src="screenshots/techmart.png" alt="TechMart" loading="lazy">
+                        <img src="screenshots/learnhub_plus.png" alt="LearnHub Plus" loading="lazy">
                     </div>
                     <div class="gallery-item-footer">
                         <div class="metrics">
-                            <span class="metric">Quality: 95.0%</span>
-                            <span class="metric">Generated in: 0.000s</span>
-                            <span class="metric">Components: 7</span>
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
                         </div>
                         <div class="actions">
-                            <a href="generated_html/techmart.html" target="_blank" class="btn">View Live</a>
+                            <a href="generated_html/learnhub_plus.html" target="_blank" class="btn">View Live</a>
                         </div>
                     </div>
                 </div>
             
-                <div class="gallery-item">
+                <div class="gallery-item" data-style="classic" data-font="elegant">
                     <div class="gallery-item-header">
-                        <h3>DataViz Pro</h3>
-                        <span class="badge badge-bold">bold</span>
-                        <span class="badge badge-dashboard">dashboard</span>
+                        <div>
+                            <h3>WealthWise</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">classic</span>
+                                <span class="badge badge-font">elegant font</span>
+                                <span class="badge badge-type">fintech</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="plain-language">
                         <strong>Plain Language Input:</strong>
-                        <p>"Design a bold analytics dashboard with data visualization in purple"</p>
+                        <p>"Design a classic financial dashboard with elegant fonts, stock charts, and professional panels in forest green"</p>
                     </div>
                     <div class="screenshot-container">
-                        <img src="screenshots/dataviz_pro.png" alt="DataViz Pro" loading="lazy">
+                        <img src="screenshots/wealthwise.png" alt="WealthWise" loading="lazy">
                     </div>
                     <div class="gallery-item-footer">
                         <div class="metrics">
-                            <span class="metric">Quality: 95.0%</span>
-                            <span class="metric">Generated in: 0.000s</span>
-                            <span class="metric">Components: 7</span>
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
                         </div>
                         <div class="actions">
-                            <a href="generated_html/dataviz_pro.html" target="_blank" class="btn">View Live</a>
+                            <a href="generated_html/wealthwise.html" target="_blank" class="btn">View Live</a>
                         </div>
                     </div>
                 </div>
             
-                <div class="gallery-item">
+                <div class="gallery-item" data-style="technical" data-font="technical">
                     <div class="gallery-item-header">
-                        <h3>CreativeStudio</h3>
-                        <span class="badge badge-modern">modern</span>
-                        <span class="badge badge-portfolio">portfolio</span>
+                        <div>
+                            <h3>DevMetrics</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">technical</span>
+                                <span class="badge badge-font">technical font</span>
+                                <span class="badge badge-type">developer</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="plain-language">
                         <strong>Plain Language Input:</strong>
-                        <p>"Create a modern creative portfolio website with orange accents and animations"</p>
+                        <p>"Create a technical developer dashboard with monospace fonts, code panels, and dark accents in cyan"</p>
                     </div>
                     <div class="screenshot-container">
-                        <img src="screenshots/creativestudio.png" alt="CreativeStudio" loading="lazy">
+                        <img src="screenshots/devmetrics.png" alt="DevMetrics" loading="lazy">
                     </div>
                     <div class="gallery-item-footer">
                         <div class="metrics">
-                            <span class="metric">Quality: 95.0%</span>
-                            <span class="metric">Generated in: 0.000s</span>
-                            <span class="metric">Components: 7</span>
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
                         </div>
                         <div class="actions">
-                            <a href="generated_html/creativestudio.html" target="_blank" class="btn">View Live</a>
+                            <a href="generated_html/devmetrics.html" target="_blank" class="btn">View Live</a>
                         </div>
                     </div>
                 </div>
             
-                <div class="gallery-item">
+                <div class="gallery-item" data-style="minimal" data-font="minimal">
                     <div class="gallery-item-header">
-                        <h3>DeliciousEats</h3>
-                        <span class="badge badge-classic">classic</span>
-                        <span class="badge badge-restaurant">restaurant</span>
+                        <div>
+                            <h3>HealthSync</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">minimal</span>
+                                <span class="badge badge-font">minimal font</span>
+                                <span class="badge badge-type">healthcare</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="plain-language">
                         <strong>Plain Language Input:</strong>
-                        <p>"Build a classic restaurant website with bold red design and menu showcase"</p>
+                        <p>"Build a minimal healthcare portal with clean typography, patient charts, and accessible design in medical teal"</p>
                     </div>
                     <div class="screenshot-container">
-                        <img src="screenshots/deliciouseats.png" alt="DeliciousEats" loading="lazy">
+                        <img src="screenshots/healthsync.png" alt="HealthSync" loading="lazy">
                     </div>
                     <div class="gallery-item-footer">
                         <div class="metrics">
-                            <span class="metric">Quality: 95.0%</span>
-                            <span class="metric">Generated in: 0.000s</span>
-                            <span class="metric">Components: 7</span>
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
                         </div>
                         <div class="actions">
-                            <a href="generated_html/deliciouseats.html" target="_blank" class="btn">View Live</a>
+                            <a href="generated_html/healthsync.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item" data-style="glassmorphic" data-font="playful">
+                    <div class="gallery-item-header">
+                        <div>
+                            <h3>DesignLab</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">glassmorphic</span>
+                                <span class="badge badge-font">playful font</span>
+                                <span class="badge badge-type">creative</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Design a gradient-heavy creative agency site with bold fonts, portfolio galleries, and glassmorphic panels in purple"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/designlab.png" alt="DesignLab" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/designlab.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item" data-style="neumorphic" data-font="modern">
+                    <div class="gallery-item-header">
+                        <div>
+                            <h3>FitPro</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">neumorphic</span>
+                                <span class="badge badge-font">modern font</span>
+                                <span class="badge badge-type">fitness</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Create a neumorphic fitness app with soft shadows, workout charts, and modern panels in energetic red"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/fitpro.png" alt="FitPro" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/fitpro.html" target="_blank" class="btn">View Live</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="gallery-item" data-style="modern" data-font="minimal">
+                    <div class="gallery-item-header">
+                        <div>
+                            <h3>TravelEase</h3>
+                            <div class="badges">
+                                <span class="badge badge-style">modern</span>
+                                <span class="badge badge-font">minimal font</span>
+                                <span class="badge badge-type">travel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plain-language">
+                        <strong>Plain Language Input:</strong>
+                        <p>"Build a travel booking platform with diverse button styles, interactive maps, and booking panels in sky blue"</p>
+                    </div>
+                    <div class="screenshot-container">
+                        <img src="screenshots/travelease.png" alt="TravelEase" loading="lazy">
+                    </div>
+                    <div class="gallery-item-footer">
+                        <div class="metrics">
+                            <span class="metric">Quality: 97.0%</span>
+                            <span class="metric">Responsive: 98.0%</span>
+                            <span class="metric">Components: 6</span>
+                        </div>
+                        <div class="actions">
+                            <a href="generated_html/travelease.html" target="_blank" class="btn">View Live</a>
                         </div>
                     </div>
                 </div>
@@ -356,11 +554,49 @@
         </div>
         
         <footer>
-            <p>Generated by the Autonomous User Interface Engine</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                All UIs were generated from plain language descriptions with proper, working components
+            <h3>Generated by the Autonomous User Interface Engine</h3>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                All UIs feature diverse styles, multiple fonts, advanced components, and responsive design
             </p>
         </footer>
     </div>
+    
+    <script>
+        let activeStyle = 'all';
+        let activeFont = 'all';
+        
+        function filterGallery() {
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                const itemStyle = item.dataset.style;
+                const itemFont = item.dataset.font;
+                const styleMatch = activeStyle === 'all' || itemStyle === activeStyle;
+                const fontMatch = activeFont === 'all' || itemFont === activeFont;
+                
+                if (styleMatch && fontMatch) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+        
+        document.querySelectorAll('[data-filter-style]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-filter-style]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeStyle = this.dataset.filterStyle;
+                filterGallery();
+            });
+        });
+        
+        document.querySelectorAll('[data-filter-font]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('[data-filter-font]').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activeFont = this.dataset.filterFont;
+                filterGallery();
+            });
+        });
+    </script>
 </body>
 </html>
