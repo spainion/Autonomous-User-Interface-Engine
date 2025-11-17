@@ -51,3 +51,9 @@ showcase_output/*/
 showcase_output/*.html
 showcase_output/*.json
 !showcase_output/README.md
+
+# Generated UI outputs
+test_output/
+generated_uis/
+demo_output/
+unified_output/
