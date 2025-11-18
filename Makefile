@@ -1,7 +1,7 @@
 # Makefile for Autonomous User Interface Engine
 # Phase 1: Quick Wins & Foundation
 
-.PHONY: help install install-dev format lint test test-cov clean pre-commit-install pre-commit-run
+.PHONY: help install install-dev format lint test test-cov clean pre-commit-install pre-commit-run docker-build docker-up docker-down docker-logs api-dev
 
 help:  ## Show this help message
 	@echo 'Usage: make [target]'
@@ -63,3 +63,29 @@ security:  ## Run security checks
 all: format lint test  ## Run format, lint, and test
 
 ci: lint test security  ## Run CI pipeline locally
+
+# Phase 2: Production Deployment Commands
+
+docker-build:  ## Build Docker image
+	docker build -t ui-engine:latest .
+
+docker-up:  ## Start all services with docker-compose
+	docker-compose up -d
+
+docker-down:  ## Stop all services
+	docker-compose down
+
+docker-logs:  ## View docker-compose logs
+	docker-compose logs -f
+
+docker-restart:  ## Restart all services
+	docker-compose restart
+
+docker-clean:  ## Remove containers and volumes
+	docker-compose down -v
+
+api-dev:  ## Run API server in development mode
+	python -m uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+
+api-prod:  ## Run API server in production mode
+	python -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
