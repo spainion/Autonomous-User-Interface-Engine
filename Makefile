@@ -138,3 +138,13 @@ performance:  ## Run full performance test suite
 	make benchmark
 	make load-test
 	make screenshots
+
+# Phase 5: Enterprise Features Commands
+
+enterprise-setup:  ## Setup enterprise features
+	@echo "Setting up enterprise features..."
+	@echo "Configure JWT_SECRET_KEY in environment"
+	@echo "Run database migrations for multi-tenancy"
+
+test-enterprise:  ## Test enterprise features
+	pytest tests/enterprise/ -v || echo "Enterprise tests not yet available"

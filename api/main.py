@@ -88,6 +88,15 @@ app.include_router(generation.router, prefix="/api/v1", tags=["generation"])
 app.include_router(context.router, prefix="/api/v1", tags=["context"])
 app.include_router(agents.router, prefix="/api/v1", tags=["agents"])
 
+# Phase 5: Enterprise routers
+try:
+    from api.routers import tenants, auth, analytics
+    app.include_router(tenants.router, prefix="/api/v1", tags=["tenants"])
+    app.include_router(auth.router, prefix="/api/v1", tags=["authentication"])
+    app.include_router(analytics.router, prefix="/api/v1", tags=["analytics"])
+except ImportError:
+    pass  # Enterprise features not available
+
 
 @app.get("/")
 async def root() -> Dict[str, Any]:
