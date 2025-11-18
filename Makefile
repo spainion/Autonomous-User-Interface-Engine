@@ -116,3 +116,25 @@ security-scan:  ## Run comprehensive security scans
 coverage:  ## Generate and view coverage report
 	pytest tests/ --cov=. --cov-report=html --cov-report=term-missing
 	@echo "Coverage report generated in htmlcov/"
+
+# Phase 4: Performance Optimization Commands
+
+benchmark:  ## Run performance benchmarks
+	@echo "Running performance benchmarks..."
+	python -m benchmarks.bench_context_engine || true
+	python -m benchmarks.bench_api || true
+
+screenshots:  ## Capture screenshots with Playwright
+	python screenshot_utility.py
+
+visual-tests:  ## Run visual regression tests
+	pytest tests/e2e/test_visual_regression.py -v
+
+benchmark-all:  ## Run all benchmarks and generate report
+	make benchmark
+	@echo "Benchmarks complete!"
+
+performance:  ## Run full performance test suite
+	make benchmark
+	make load-test
+	make screenshots
