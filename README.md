@@ -1,5 +1,11 @@
 # Autonomous-User-Interface-Engine
 
+[![CI Pipeline](https://github.com/spainion/Autonomous-User-Interface-Engine/actions/workflows/ci.yml/badge.svg)](https://github.com/spainion/Autonomous-User-Interface-Engine/actions/workflows/ci.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 An autonomous user interface assembly engine powered by LLM API network calls with **massive enhancements** for performance, intelligence, and scalability. The engine achieves **10-100x speedups** through advanced caching, FAISS-powered search, and intelligent memory management.
 
 ## ⚡ Quick Start - Complete System Access
