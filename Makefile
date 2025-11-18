@@ -148,3 +148,33 @@ enterprise-setup:  ## Setup enterprise features
 
 test-enterprise:  ## Test enterprise features
 	pytest tests/enterprise/ -v || echo "Enterprise tests not yet available"
+
+# Phase 6: Innovation Features Commands
+
+cli-install:  ## Install CLI tool
+	pip install typer rich
+	python cli/main.py --install-completion
+
+cli-run:  ## Run CLI tool
+	python cli/main.py
+
+plugin-dev:  ## Setup plugin development environment
+	@echo "Setting up plugin development environment..."
+	mkdir -p plugins/examples
+	@echo "Plugin examples available in plugins/examples/"
+
+voice-test:  ## Test voice interface
+	@echo "Testing voice interface..."
+	python voice/voice_commands.py || echo "Voice dependencies may not be installed"
+
+phase6-demo:  ## Run Phase 6 feature demos
+	@echo "Running Phase 6 Innovation feature demos..."
+	@echo "\n=== AI Features ==="
+	python ai/advanced_reasoning.py || true
+	@echo "\n=== Plugin System ==="
+	python plugins/plugin_manager.py || true
+	@echo "\n=== CLI Tool ==="
+	python cli/main.py info || true
+
+phase6-test:  ## Test Phase 6 features
+	pytest tests/ -k "phase6" -v || echo "Phase 6 tests not yet available"

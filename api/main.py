@@ -97,6 +97,14 @@ try:
 except ImportError:
     pass  # Enterprise features not available
 
+# Phase 6: Innovation routers
+try:
+    from api.routers import ai, plugins
+    app.include_router(ai.router, prefix="/api/v1/ai", tags=["ai-features"])
+    app.include_router(plugins.router, prefix="/api/v1/plugins", tags=["plugins"])
+except ImportError:
+    logger.warning("Phase 6 features not available")
+
 
 @app.get("/")
 async def root() -> Dict[str, Any]:
