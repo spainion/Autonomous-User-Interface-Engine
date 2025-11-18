@@ -89,3 +89,30 @@ api-dev:  ## Run API server in development mode
 
 api-prod:  ## Run API server in production mode
 	python -m uvicorn api.main:app --host 0.0.0.0 --port 8000 --workers 4
+
+# Phase 3: Quality & Security Commands
+
+test-e2e:  ## Run end-to-end tests
+	pytest tests/e2e/ -v -m e2e
+
+test-performance:  ## Run performance tests
+	pytest tests/performance/ -v -m performance
+
+test-property:  ## Run property-based tests
+	pytest tests/property/ -v -m property
+
+test-all:  ## Run all tests including E2E
+	pytest tests/ -v
+
+load-test:  ## Run load tests with Locust
+	locust -f locustfile.py --host=http://localhost:8000
+
+security-scan:  ## Run comprehensive security scans
+	@echo "Running Bandit..."
+	bandit -r . -ll || true
+	@echo "Running Safety..."
+	safety check || true
+
+coverage:  ## Generate and view coverage report
+	pytest tests/ --cov=. --cov-report=html --cov-report=term-missing
+	@echo "Coverage report generated in htmlcov/"
