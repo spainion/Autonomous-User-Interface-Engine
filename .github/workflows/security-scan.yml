@@ -30,7 +30,7 @@ jobs:
           bandit -r . -f screen
 
       - name: Upload Bandit Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: bandit-security-report
