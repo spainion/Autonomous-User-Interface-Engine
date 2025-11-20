@@ -1,0 +1,20 @@
+# Bandit configuration for security scanning
+[bandit]
+exclude_dirs = [
+    '/tests/',
+    '/venv/',
+    '/.venv/',
+    '/build/',
+    '/dist/',
+    '/.git/',
+    '/node_modules/'
+]
+
+# Skip specific tests if needed (with justification)
+skips = []
+
+# Severity levels: LOW, MEDIUM, HIGH
+severity = MEDIUM
+
+# Confidence levels: LOW, MEDIUM, HIGH
+confidence = MEDIUM

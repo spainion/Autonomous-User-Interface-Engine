@@ -57,3 +57,10 @@ test_output/
 generated_uis/
 demo_output/
 unified_output/
+
+# Phase 4: Screenshots and test outputs
+screenshots/*.png
+screenshots/tests/*.png
+screenshots/tests/*.html
+screenshots/*.json
+!screenshots/.gitkeep

@@ -1,0 +1,78 @@
+# Docker ignore file
+# Exclude unnecessary files from Docker build context
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+
+# Documentation
+*.md
+docs/
+
+# Tests
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Temporary files
+*.log
+*.tmp
+tmp/
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Data directories
+data/
+output/
+playwright_previews/
+showcase_output/
+ai_enhanced/
+
+# Monitoring configs (will be copied selectively)
+monitoring/
+
+# Development tools
+Makefile
+setup.sh
+requirements-dev.txt
+.pre-commit-config.yaml
+.editorconfig
+pyproject.toml
